@@ -1,12 +1,19 @@
 import { NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const { searchParams } = new URL(request.url)
+    const category = searchParams.get('category')
+    const featuredOnly = searchParams.get('featured') === 'true'
+
+    const where = {}
+    if (category) where.category = category
+    if (featuredOnly) where.featured = true
+
     const products = await prisma.product.findMany({
-      orderBy: {
-        createdAt: 'desc'
-      }
+      where,
+      orderBy: { createdAt: 'desc' }
     })
 
     return NextResponse.json({
@@ -34,7 +41,8 @@ export async function POST(request) {
         image: body.image,
         category: body.category,
         sizes: body.sizes,
-        inStock: body.inStock ?? true
+        inStock: body.inStock ?? true,
+        featured: body.featured ?? false
       }
     })
 

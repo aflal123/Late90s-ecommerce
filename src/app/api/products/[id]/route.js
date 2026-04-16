@@ -32,7 +32,7 @@ export async function PUT(request, { params }) {
   try {
     const { id } = await params
     const body = await request.json()
-    const { name, description, price, image, category, sizes, inStock } = body
+    const { name, description, price, image, category, sizes, inStock, featured } = body
 
     const existing = await prisma.product.findUnique({
       where: { id }
@@ -54,7 +54,8 @@ export async function PUT(request, { params }) {
         image: image ?? existing.image,
         category: category ?? existing.category,
         sizes: sizes ?? existing.sizes,
-        inStock: inStock ?? existing.inStock
+        inStock: inStock ?? existing.inStock,
+        featured: featured !== undefined ? featured : existing.featured
       }
     })
 

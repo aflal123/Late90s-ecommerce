@@ -16,6 +16,7 @@ model Product {
   category    String
   sizes       String[]
   inStock     Boolean  @default(true)
+  featured    Boolean  @default(false)
   createdAt   DateTime @default(now())
   orders      Order[]
 }
@@ -38,4 +39,13 @@ model User {
   phone       String   @unique
   name        String?
   createdAt   DateTime @default(now())
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  customerName String
+  rating       Int
+  comment      String
+  approved     Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
