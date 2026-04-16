@@ -28,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up">
       <html lang="en" suppressHydrationWarning>
         <body className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
           <ThemeProvider attribute="class" defaultTheme="dark">
