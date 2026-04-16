@@ -16,7 +16,7 @@ export default function CartPage() {
     <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg)', paddingTop: '80px' }}>
 
       {/* Header */}
-      <div style={{
+      <div className="cart-header" style={{
         position: 'relative', overflow: 'hidden',
         padding: '5rem 3rem 4rem',
         borderBottom: '1px solid var(--border)',
@@ -82,7 +82,7 @@ export default function CartPage() {
       </div>
 
       {/* Steps */}
-      <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '5rem 3rem' }}>
+      <div className="cart-body" style={{ maxWidth: '1300px', margin: '0 auto', padding: '5rem 3rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', backgroundColor: 'var(--border)', marginBottom: '4rem' }}>
           {steps.map((step, i) => (
             <motion.div
@@ -160,6 +160,13 @@ export default function CartPage() {
           </a>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .cart-header { padding: 3rem 1.25rem 2.5rem !important; }
+          .cart-body { padding: 3rem 1.25rem !important; }
+        }
+      `}</style>
     </main>
   )
 }

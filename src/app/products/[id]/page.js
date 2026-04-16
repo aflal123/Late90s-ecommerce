@@ -103,7 +103,7 @@ export default function ProductPage() {
 
   return (
     <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg)', paddingTop: '80px' }}>
-      <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '2rem 3rem 5rem' }}>
+      <div className="product-grid" style={{ maxWidth: '1300px', margin: '0 auto', padding: '2rem 3rem 5rem' }}>
 
         {/* Breadcrumb */}
         <motion.div
@@ -248,6 +248,7 @@ export default function ProductPage() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
+            className="product-sticky"
             style={{ position: 'sticky', top: '100px' }}
           >
 
@@ -599,7 +600,10 @@ export default function ProductPage() {
           .product-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+            padding: 1.25rem !important;
           }
+          .product-related { padding: 1.25rem 1.25rem 4rem !important; }
+          .product-sticky { position: static !important; }
         }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
       `}</style>

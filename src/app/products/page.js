@@ -57,7 +57,7 @@ export default function ProductsPage() {
     }}>
 
       {/* Page Header */}
-      <div style={{
+      <div className="products-header" style={{
         position: 'relative',
         borderBottom: '1px solid var(--border)',
         overflow: 'hidden',
@@ -171,7 +171,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 3rem' }}>
+      <div className="products-body" style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 3rem' }}>
 
         {/* Filter + Sort Bar */}
         <motion.div
@@ -422,6 +422,10 @@ export default function ProductsPage() {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
+        }
+        @media (max-width: 768px) {
+          .products-header { padding: 3rem 1.25rem 2rem !important; }
+          .products-body { padding: 0 1.25rem !important; }
         }
       `}</style>
     </main>

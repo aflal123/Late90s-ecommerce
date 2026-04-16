@@ -48,7 +48,7 @@ export default function Footer() {
       </div>
 
       {/* Top CTA strip */}
-      <div style={{
+      <div className="footer-cta" style={{
         borderBottom: '1px solid var(--border)',
         padding: '3.5rem 3rem',
         position: 'relative',
@@ -130,7 +130,7 @@ export default function Footer() {
       </div>
 
       {/* Main footer grid */}
-      <div style={{
+      <div className="footer-grid footer-body" style={{
         maxWidth: '1300px',
         margin: '0 auto',
         padding: '4rem 3rem 3rem',
@@ -139,9 +139,7 @@ export default function Footer() {
         gap: '3rem',
         position: 'relative',
         zIndex: 1,
-      }}
-        className="footer-grid"
-      >
+      }}>
 
         {/* Brand column */}
         <div>
@@ -269,7 +267,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{
+      <div className="footer-bottom" style={{
         borderTop: '1px solid rgba(255,255,255,0.06)',
         padding: '1.25rem 3rem',
         maxWidth: '1300px',
@@ -320,6 +318,9 @@ export default function Footer() {
             grid-template-columns: 1fr 1fr !important;
             gap: 2rem !important;
           }
+          .footer-cta { padding: 3rem 1.25rem !important; }
+          .footer-body { padding: 3rem 1.25rem 2rem !important; }
+          .footer-bottom { padding: 1.25rem !important; flex-direction: column !important; gap: 0.75rem !important; text-align: center !important; }
         }
         @media (max-width: 480px) {
           .footer-grid {

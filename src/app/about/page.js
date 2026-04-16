@@ -26,7 +26,7 @@ export default function AboutPage() {
     <main style={{ backgroundColor: 'var(--bg)', minHeight: '100vh', paddingTop: '80px' }}>
 
       {/* HERO */}
-      <section style={{
+      <section className="about-hero" style={{
         position: 'relative',
         overflow: 'hidden',
         padding: '6rem 3rem 5rem',
@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       {/* STORY SECTION */}
-      <section style={{ padding: '6rem 3rem', borderBottom: '1px solid var(--border)' }}>
+      <section className="about-section" style={{ padding: '6rem 3rem', borderBottom: '1px solid var(--border)' }}>
         <div style={{
           maxWidth: '1300px', margin: '0 auto',
           display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -174,7 +174,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section style={{ padding: '6rem 3rem', borderBottom: '1px solid var(--border)' }}>
+      <section className="about-section" style={{ padding: '6rem 3rem', borderBottom: '1px solid var(--border)' }}>
         <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -229,7 +229,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '6rem 3rem' }}>
+      <section className="about-section" style={{ padding: '6rem 3rem' }}>
         <div style={{ maxWidth: '1300px', margin: '0 auto', textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -282,6 +282,8 @@ export default function AboutPage() {
         @media (max-width: 768px) {
           .about-story-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
           .about-story-grid > div:first-child { aspect-ratio: 1/1 !important; }
+          .about-section { padding: 3rem 1.25rem !important; }
+          .about-hero { padding: 3.5rem 1.25rem 3rem !important; }
         }
       `}</style>
     </main>

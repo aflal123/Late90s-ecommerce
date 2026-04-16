@@ -63,7 +63,7 @@ export default function HeroSection() {
         zIndex: 0,
       }}>90S</div>
 
-      <div style={{
+      <div className="hero-grid" style={{
         maxWidth: '1300px',
         margin: '0 auto',
         padding: '0 3rem',
@@ -352,7 +352,11 @@ export default function HeroSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+            padding: 0 1.25rem !important;
+          }
         }
       `}</style>
     </section>
