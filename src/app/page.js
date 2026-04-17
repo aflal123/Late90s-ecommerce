@@ -51,8 +51,8 @@ const jsonLd = {
   ],
   servesCuisine: undefined,
   sameAs: [
-    'https://www.instagram.com/late90s',
-    'https://www.tiktok.com/@late90s',
+    'https://www.instagram.com/late90s_outlet/',
+    'https://www.tiktok.com/@late90s_',
   ],
 }
 
