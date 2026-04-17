@@ -85,17 +85,19 @@ export async function DELETE(request, { params }) {
       )
     }
 
-    await prisma.product.delete({
-      where: { id }
-    })
+    // Delete related orders first (foreign key constraint)
+    await prisma.order.deleteMany({ where: { productId: id } })
+
+    await prisma.product.delete({ where: { id } })
 
     return NextResponse.json(
       { success: true, message: 'Product deleted successfully' }
     )
 
   } catch (error) {
+    console.error('Delete product error:', error?.message)
     return NextResponse.json(
-      { success: false, message: 'Failed to delete product' },
+      { success: false, message: error?.message || 'Failed to delete product' },
       { status: 500 }
     )
   }
