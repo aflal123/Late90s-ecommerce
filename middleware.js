@@ -1,13 +1,7 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
-
-const isCustomerRoute = createRouteMatcher(['/cart(.*)', '/orders(.*)'])
-const isAdminRoute    = createRouteMatcher(['/admin(.*)'])
-const isAdminLogin    = createRouteMatcher(['/admin/login'])
 
 const ADMIN_COOKIE = 'admin_session'
 
-// Verify admin session cookie using Web Crypto (Edge-compatible)
 async function verifyAdminCookie(token) {
   if (!token) return false
   try {
@@ -33,24 +27,19 @@ async function verifyAdminCookie(token) {
     const valid = await crypto.subtle.verify('HMAC', key, raw, new TextEncoder().encode(data))
     if (!valid) return false
 
-    const payloadJson = atob(data.replace(/-/g, '+').replace(/_/g, '/'))
-    const payload = JSON.parse(payloadJson)
+    const payload = JSON.parse(atob(data.replace(/-/g, '+').replace(/_/g, '/')))
     return Math.floor(Date.now() / 1000) < payload.exp
   } catch {
     return false
   }
 }
 
-export default clerkMiddleware(async (auth, req) => {
+export default async function middleware(req) {
   try {
-    // ── Customer routes: require Clerk sign-in ──
-    if (isCustomerRoute(req)) {
-      await auth.protect()
-      return
-    }
+    const { pathname } = req.nextUrl
 
-    // ── Admin login page: redirect to /admin if already authenticated ──
-    if (isAdminLogin(req)) {
+    // Admin login page — redirect to /admin if already logged in
+    if (pathname === '/admin/login') {
       const token = req.cookies.get(ADMIN_COOKIE)?.value
       if (await verifyAdminCookie(token)) {
         return NextResponse.redirect(new URL('/admin', req.url))
@@ -58,8 +47,8 @@ export default clerkMiddleware(async (auth, req) => {
       return NextResponse.next()
     }
 
-    // ── Admin routes: redirect to login if not authenticated ──
-    if (isAdminRoute(req)) {
+    // All /admin routes (except /admin/login above) — require cookie
+    if (pathname.startsWith('/admin')) {
       const token = req.cookies.get(ADMIN_COOKIE)?.value
       if (!(await verifyAdminCookie(token))) {
         return NextResponse.redirect(new URL('/admin/login', req.url))
@@ -68,16 +57,11 @@ export default clerkMiddleware(async (auth, req) => {
     }
 
     return NextResponse.next()
-  } catch (err) {
-    // Never crash the middleware — always let the request through
-    // The page-level auth checks will handle security
-    console.error('Middleware error:', err?.message)
+  } catch {
     return NextResponse.next()
   }
-})
+}
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)).*)',
-  ],
+  matcher: ['/admin', '/admin/(.*)'],
 }
