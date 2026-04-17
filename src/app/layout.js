@@ -1,8 +1,11 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
+import Script from 'next/script'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import './globals.css'
+
+const GA_ID = 'G-W7YY7DN10E'
 
 const bebas = Bebas_Neue({
   weight: '400',
@@ -214,6 +217,20 @@ export default function RootLayout({ children }) {
     <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up">
       <html lang="en">
         <body className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
+          {/* Google Analytics 4 */}
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga-init" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}', { anonymize_ip: true });
+            `}
+          </Script>
+
           <Navbar />
           {children}
           <Footer />
