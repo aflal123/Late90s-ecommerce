@@ -22,6 +22,9 @@ const playfair = Playfair_Display({
 
 export const metadata = {
   metadataBase: new URL('https://www.late90s.online'),
+  verification: {
+    google: 'IsyHUaynLcxZyfl0kDdmpgDBX0yns0aUV17U1hYMajY',
+  },
   title: {
     default: 'Late90s | Best Online Clothing Store in Sri Lanka — Old School. New Rules.',
     template: '%s | Late90s Sri Lanka',
