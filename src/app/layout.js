@@ -21,35 +21,69 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  metadataBase: new URL('https://late90s.vercel.app'),
+  metadataBase: new URL('https://www.late90s.online'),
   title: {
-    default: 'Late90s — Old School. New Rules.',
-    template: '%s | Late90s',
+    default: 'Late90s | Best Online Clothing Store in Sri Lanka — Old School. New Rules.',
+    template: '%s | Late90s Sri Lanka',
   },
-  description: 'Premium Sri Lankan streetwear inspired by the late 90s era. Locally made, globally styled. Shop oversized tees, hoodies and more. Order via WhatsApp — ships island-wide.',
-  keywords: ['Sri Lanka streetwear', 'Sri Lankan fashion', 'late 90s clothing', 'oversized tees Sri Lanka', 'local fashion brand', 'Colombo streetwear', 'Lankan clothing brand', 'Late90s'],
-  authors: [{ name: 'Late90s', url: 'https://late90s.vercel.app' }],
+  description: 'Late90s is Sri Lanka\'s best online clothing store. Shop premium oversized t-shirts, streetwear & trending fashion. Best t-shirts to buy online. Fast delivery island-wide. Order via WhatsApp.',
+  keywords: [
+    // High-intent buyer searches
+    'best online clothing store Sri Lanka',
+    'buy t shirts online Sri Lanka',
+    'best t shirt to buy',
+    'clothing shop near me Sri Lanka',
+    'online clothes shopping Sri Lanka',
+    'best streetwear Sri Lanka',
+    'affordable clothing Sri Lanka',
+    'trendy clothes Sri Lanka',
+    // Product-specific
+    'oversized t shirt Sri Lanka',
+    'oversized tee Sri Lanka',
+    'best oversized tshirt',
+    'streetwear Sri Lanka',
+    'Sri Lanka fashion brand',
+    'men clothing online Sri Lanka',
+    // Local
+    'Colombo clothing store',
+    'Sri Lankan fashion online',
+    'Lankan streetwear brand',
+    'local clothing brand Sri Lanka',
+    'buy clothes online Colombo',
+    'Colombo fashion shop',
+    // Brand
+    'Late90s',
+    'late90s online',
+    'late 90s clothing',
+    'late90s Sri Lanka',
+    // Generic high-traffic
+    'best online store',
+    'online shopping Sri Lanka',
+    'fashion online Sri Lanka',
+    'WhatsApp clothing order Sri Lanka',
+  ],
+  authors: [{ name: 'Late90s', url: 'https://www.late90s.online' }],
   creator: 'Late90s',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://late90s.vercel.app',
+    url: 'https://www.late90s.online',
     siteName: 'Late90s',
-    title: 'Late90s — Old School. New Rules.',
-    description: 'Premium Sri Lankan streetwear inspired by the late 90s era. Locally made, globally styled.',
+    title: 'Late90s | Best Online Clothing Store in Sri Lanka',
+    description: 'Shop premium oversized t-shirts & streetwear. Sri Lanka\'s best online fashion store. Order via WhatsApp — ships island-wide.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Late90s — Sri Lankan Streetwear',
+        alt: 'Late90s — Best Online Clothing Store Sri Lanka',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Late90s — Old School. New Rules.',
-    description: 'Premium Sri Lankan streetwear inspired by the late 90s era.',
+    title: 'Late90s | Best Online Clothing Store in Sri Lanka',
+    description: 'Premium oversized tees & streetwear. Locally made, globally styled. Order via WhatsApp.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -66,6 +100,9 @@ export const metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
+  },
+  alternates: {
+    canonical: 'https://www.late90s.online',
   },
 }
 

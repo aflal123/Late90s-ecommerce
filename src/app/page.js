@@ -10,9 +10,9 @@ const jsonLd = {
   '@type': 'ClothingStore',
   name: 'Late90s',
   description: 'Premium Sri Lankan streetwear inspired by the late 90s era. Locally made, globally styled.',
-  url: 'https://late90s.vercel.app',
-  logo: 'https://late90s.vercel.app/late90s-logo-white.png',
-  image: 'https://late90s.vercel.app/og-image.png',
+  url: 'https://www.late90s.online',
+  logo: 'https://www.late90s.online/late90s-logo-white.png',
+  image: 'https://www.late90s.online/og-image.png',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'LK',

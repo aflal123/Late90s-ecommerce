@@ -7,6 +7,6 @@ export default function robots() {
         disallow: ['/admin', '/admin/', '/api/'],
       },
     ],
-    sitemap: 'https://late90s.vercel.app/sitemap.xml',
+    sitemap: 'https://www.late90s.online/sitemap.xml',
   }
 }

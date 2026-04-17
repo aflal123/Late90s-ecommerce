@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 
-const BASE_URL = 'https://late90s.vercel.app'
+const BASE_URL = 'https://www.late90s.online'
 
 export default async function sitemap() {
   // Static pages

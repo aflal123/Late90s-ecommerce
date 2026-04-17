@@ -1,7 +1,7 @@
 import prisma from '@/lib/prisma'
 import ProductDetail from './ProductDetail'
 
-const BASE_URL = 'https://late90s.vercel.app'
+const BASE_URL = 'https://www.late90s.online'
 
 export async function generateMetadata({ params }) {
   const { id } = await params
@@ -11,7 +11,8 @@ export async function generateMetadata({ params }) {
 
     const title = `${product.name} — LKR ${product.price.toLocaleString()}`
     const description = product.description
-      || `Shop ${product.name} from Late90s. Premium Sri Lankan streetwear. Order via WhatsApp, ships island-wide.`
+      ? `${product.description} — Shop ${product.name} at Late90s, Sri Lanka's best online clothing store. LKR ${product.price.toLocaleString()}. Order via WhatsApp, island-wide delivery.`
+      : `Buy ${product.name} online — LKR ${product.price.toLocaleString()}. Best t-shirts & streetwear in Sri Lanka. Shop at Late90s, the top online clothing store. Order via WhatsApp.`
 
     return {
       title,
