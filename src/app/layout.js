@@ -28,6 +28,24 @@ export const metadata = {
   },
   description: 'Late90s — Sri Lanka\'s best streetwear & online clothing store. Shop oversized tees, trending fits & aesthetic streetwear. Affordable. Premium quality. Island-wide delivery. Order via WhatsApp instantly.',
   keywords: [
+    // 📍 Near me / local searches
+    'fashion store near me',
+    'clothing store near me',
+    'clothing shop near me',
+    'clothes shop near me',
+    'streetwear store near me',
+    'online fashion store near me',
+    'best fashion store near me',
+    'tshirt shop near me',
+    't shirt store near me',
+    'fashion boutique near me',
+    'trendy clothes near me',
+    'buy clothes near me',
+    'fashion shop near me Sri Lanka',
+    'clothing store Colombo',
+    'fashion store Colombo',
+    'streetwear store Colombo',
+
     // 🔥 Viral / trending style searches
     'streetwear 2025',
     'trending clothes 2025',
