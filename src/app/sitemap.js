@@ -9,6 +9,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/products`, lastModified: new Date(), changeFrequency: 'daily',   priority: 0.9 },
     { url: `${BASE_URL}/about`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/cart`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
+    { url: `${BASE_URL}/promo`,   lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
   ]
 
   // Dynamic product pages
