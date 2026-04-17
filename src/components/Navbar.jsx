@@ -1,10 +1,9 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import { useUser, SignInButton, SignOutButton } from '@clerk/nextjs'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ShoppingBag, Sun, Moon, Menu, X } from 'lucide-react'
+import { ShoppingBag, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -14,9 +13,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme()
   const { isSignedIn, user } = useUser()
-  const [mounted, setMounted] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -27,7 +24,6 @@ export default function Navbar() {
   const borderCol = scrolled ? 'var(--border)' : 'rgba(255,255,255,0.2)'
 
   useEffect(() => {
-    setMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -106,25 +102,6 @@ export default function Navbar() {
 
         {/* Right actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-
-          {/* Theme toggle */}
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              style={{
-                width: '36px', height: '36px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: 'none', border: 'none',
-                color: textColor,
-                cursor: 'pointer', opacity: 0.65,
-                transition: 'opacity 0.2s ease, color 0.4s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.opacity = 1}
-              onMouseLeave={e => e.currentTarget.style.opacity = 0.65}
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          )}
 
           {/* Cart */}
           <Link href="/cart" style={{

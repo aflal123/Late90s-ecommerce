@@ -49,3 +49,13 @@ model Review {
   approved     Boolean  @default(false)
   createdAt    DateTime @default(now())
 }
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @default("")
+  accent      String   @default("#c8a96e")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+}

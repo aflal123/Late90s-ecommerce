@@ -1,5 +1,4 @@
 import { ClerkProvider } from '@clerk/nextjs'
-import { ThemeProvider } from 'next-themes'
 import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -29,13 +28,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up">
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en">
         <body className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

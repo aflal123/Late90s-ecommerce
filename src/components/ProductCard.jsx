@@ -10,12 +10,11 @@ export default function ProductCard({ product, index = 0 }) {
   const [wishlisted, setWishlisted] = useState(false)
   const [hovered, setHovered] = useState(false)
 
-  const getBadge = () => {
-    if (!product.inStock) return { label: 'SOLD OUT', bg: '#2a2a2a', color: '#888' }
-    if (product.featured) return { label: 'NEW DROP', bg: 'var(--gold)', color: '#000' }
-    return null
-  }
-  const badge = getBadge()
+  const badge = !product.inStock
+    ? { label: 'SOLD OUT', bg: 'rgba(0,0,0,0.75)', color: '#555' }
+    : product.featured
+    ? { label: 'NEW DROP', bg: 'var(--gold)', color: '#000' }
+    : null
 
   const productLink = typeof window !== 'undefined' ? `${window.location.origin}/products/${product.id}` : ''
   const whatsappMessage = [
@@ -33,87 +32,68 @@ export default function ProductCard({ product, index = 0 }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        backgroundColor: 'var(--card)',
-        border: '1px solid var(--border)',
-        overflow: 'hidden',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
+        backgroundColor: 'transparent',
       }}
     >
-
-      {/* Image Area */}
-      <Link href={`/products/${product.id}`} style={{ textDecoration: 'none' }}>
+      {/* Image block */}
+      <Link href={`/products/${product.id}`} style={{ textDecoration: 'none', display: 'block' }}>
         <div style={{
           position: 'relative',
-          aspectRatio: '4/5',
+          aspectRatio: '3/4',
           overflow: 'hidden',
-          backgroundColor: 'var(--product-bg)',
+          backgroundColor: '#0d0d0d',
+          outline: `1px solid ${hovered ? 'rgba(200,169,110,0.35)' : 'rgba(255,255,255,0.04)'}`,
+          transition: 'outline-color 0.35s ease',
         }}>
 
           {product.image ? (
             <img
               src={product.image}
               alt={product.name}
+              loading="lazy"
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transform: hovered ? 'scale(1.07)' : 'scale(1)',
+                transform: hovered ? 'scale(1.05)' : 'scale(1)',
+                transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
               }}
             />
           ) : (
             <div style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              gap: '0.5rem',
+              width: '100%', height: '100%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexDirection: 'column', gap: '0.4rem',
             }}>
               <span style={{
                 fontFamily: 'var(--font-bebas)',
-                fontSize: '5rem',
-                color: 'var(--border)',
+                fontSize: '4.5rem',
+                color: '#1a1a1a',
                 letterSpacing: '0.1em',
                 lineHeight: 1,
-              }}>L9</span>
-              <span style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '0.55rem',
-                letterSpacing: '0.3em',
-                color: 'var(--muted)',
-                textTransform: 'uppercase',
-              }}>No Image</span>
+              }}>L90S</span>
             </div>
           )}
 
           {/* Badge */}
           {badge && (
             <div style={{
-              position: 'absolute',
-              top: '0.85rem',
-              left: '0.85rem',
-              backgroundColor: badge.bg,
-              padding: '0.2rem 0.65rem',
-              fontFamily: 'var(--font-inter)',
-              fontSize: '0.55rem',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              color: badge.color,
-              textTransform: 'uppercase',
-            }}>
-              {badge.label}
-            </div>
+              position: 'absolute', top: '0.75rem', left: '0.75rem',
+              backgroundColor: badge.bg, color: badge.color,
+              padding: '0.18rem 0.6rem',
+              fontFamily: 'var(--font-inter)', fontSize: '0.52rem',
+              fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+            }}>{badge.label}</div>
           )}
 
           {/* Wishlist */}
@@ -121,154 +101,108 @@ export default function ProductCard({ product, index = 0 }) {
             whileTap={{ scale: 0.85 }}
             onClick={e => { e.preventDefault(); setWishlisted(!wishlisted) }}
             style={{
-              position: 'absolute',
-              top: '0.85rem',
-              right: '0.85rem',
-              width: '34px',
-              height: '34px',
-              backgroundColor: 'rgba(0,0,0,0.55)',
-              border: `1px solid ${wishlisted ? 'var(--gold)' : 'transparent'}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              position: 'absolute', top: '0.75rem', right: '0.75rem',
+              width: '32px', height: '32px',
+              backgroundColor: 'rgba(0,0,0,0.6)',
+              border: `1px solid ${wishlisted ? 'var(--gold)' : 'rgba(255,255,255,0.12)'}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer',
-              backdropFilter: 'blur(6px)',
-              WebkitBackdropFilter: 'blur(6px)',
-              transition: 'border 0.2s ease',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              transition: 'border-color 0.2s ease',
             }}
           >
             <Heart
-              size={14}
+              size={13}
               fill={wishlisted ? 'var(--gold)' : 'none'}
-              color={wishlisted ? 'var(--gold)' : 'rgba(255,255,255,0.8)'}
+              color={wishlisted ? 'var(--gold)' : 'rgba(255,255,255,0.7)'}
             />
           </motion.button>
 
-          {/* Sold Out Overlay */}
+          {/* Sold out overlay */}
           {!product.inStock && (
             <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.55)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              position: 'absolute', inset: 0,
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
               <span style={{
                 fontFamily: 'var(--font-bebas)',
-                fontSize: '1.8rem',
-                color: 'rgba(255,255,255,0.6)',
-                letterSpacing: '0.25em',
+                fontSize: '1.6rem', color: 'rgba(255,255,255,0.45)',
+                letterSpacing: '0.3em',
               }}>SOLD OUT</span>
             </div>
           )}
 
-          {/* Hover: View Product overlay */}
+          {/* Hover: view prompt */}
           <motion.div
             animate={{ opacity: hovered && product.inStock ? 1 : 0 }}
             transition={{ duration: 0.2 }}
             style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              backgroundColor: 'rgba(0,0,0,0.6)',
-              padding: '0.75rem',
+              position: 'absolute', bottom: 0, left: 0, right: 0,
+              padding: '0.6rem',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
               textAlign: 'center',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)',
-            }}>
+            }}
+          >
             <span style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.25em',
-              color: '#fff',
-              textTransform: 'uppercase',
-              fontWeight: 600,
+              fontFamily: 'var(--font-inter)', fontSize: '0.55rem',
+              letterSpacing: '0.3em', color: 'rgba(255,255,255,0.85)',
+              textTransform: 'uppercase', fontWeight: 600,
             }}>View Product</span>
           </motion.div>
-
         </div>
       </Link>
 
-      {/* Card Body */}
-      <div style={{
-        padding: '1.1rem 1.25rem 1.25rem',
-        display: 'flex',
-        flexDirection: 'column',
-        flex: 1,
-      }}>
+      {/* Text block */}
+      <div style={{ paddingTop: '0.9rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
 
         {/* Category */}
         <span style={{
-          fontSize: '0.58rem',
-          letterSpacing: '0.28em',
-          color: 'var(--gold)',
-          textTransform: 'uppercase',
-          fontFamily: 'var(--font-inter)',
-          marginBottom: '0.35rem',
-          display: 'block',
-        }}>
-          {product.category}
-        </span>
+          fontSize: '0.54rem', letterSpacing: '0.3em',
+          color: 'var(--gold)', textTransform: 'uppercase',
+          fontFamily: 'var(--font-inter)', marginBottom: '0.3rem', display: 'block',
+        }}>{product.category}</span>
 
         {/* Name */}
         <Link href={`/products/${product.id}`} style={{ textDecoration: 'none' }}>
           <h3 style={{
             fontFamily: 'var(--font-bebas)',
-            fontSize: '1.55rem',
-            color: 'var(--text)',
-            letterSpacing: '0.04em',
-            lineHeight: 1.05,
-            marginBottom: '0.5rem',
+            fontSize: '1.45rem', color: 'var(--text)',
+            letterSpacing: '0.03em', lineHeight: 1.05,
+            marginBottom: '0.3rem',
             transition: 'color 0.2s ease',
           }}
             onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
             onMouseLeave={e => e.currentTarget.style.color = 'var(--text)'}
-          >
-            {product.name}
-          </h3>
+          >{product.name}</h3>
         </Link>
 
         {/* Price */}
         <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: '0.88rem',
-          fontWeight: 700,
-          color: 'var(--gold)',
-          letterSpacing: '0.05em',
-          marginBottom: '1rem',
-        }}>
-          LKR {product.price.toLocaleString()}
-        </p>
+          fontFamily: 'var(--font-inter)', fontSize: '0.82rem',
+          fontWeight: 700, color: 'var(--text)',
+          letterSpacing: '0.04em', marginBottom: '0.85rem',
+          opacity: 0.9,
+        }}>LKR {product.price.toLocaleString()}</p>
 
-        {/* Sizes */}
+        {/* Size pills */}
         {product.sizes && product.sizes.length > 0 && (
-          <div style={{
-            display: 'flex',
-            gap: '0.35rem',
-            flexWrap: 'wrap',
-            marginBottom: '1rem',
-          }}>
+          <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
             {product.sizes.map(size => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(selectedSize === size ? null : size)}
                 style={{
-                  padding: '0.28rem 0.65rem',
-                  border: `1px solid ${selectedSize === size ? 'var(--gold)' : 'var(--border)'}`,
+                  padding: '0.22rem 0.55rem',
+                  border: `1px solid ${selectedSize === size ? 'var(--gold)' : 'rgba(255,255,255,0.12)'}`,
                   backgroundColor: selectedSize === size ? 'var(--gold)' : 'transparent',
-                  color: selectedSize === size ? '#000' : 'var(--subtitle)',
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '0.62rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease',
+                  color: selectedSize === size ? '#000' : 'rgba(255,255,255,0.45)',
+                  fontFamily: 'var(--font-inter)', fontSize: '0.58rem',
+                  fontWeight: 600, letterSpacing: '0.06em',
+                  cursor: 'pointer', transition: 'all 0.15s ease',
                 }}
-              >
-                {size}
-              </button>
+              >{size}</button>
             ))}
           </div>
         )}
@@ -281,29 +215,22 @@ export default function ProductCard({ product, index = 0 }) {
             rel="noopener noreferrer"
             onClick={e => !product.inStock && e.preventDefault()}
             style={{
-              display: 'block',
-              width: '100%',
-              padding: '0.78rem',
-              backgroundColor: product.inStock ? 'var(--gold)' : 'var(--border)',
-              color: product.inStock ? '#000' : 'var(--muted)',
+              display: 'block', width: '100%', padding: '0.72rem',
+              backgroundColor: product.inStock ? 'var(--gold)' : 'rgba(255,255,255,0.06)',
+              color: product.inStock ? '#000' : 'rgba(255,255,255,0.2)',
               border: 'none',
-              fontFamily: 'var(--font-inter)',
-              fontSize: '0.62rem',
-              fontWeight: 700,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              textAlign: 'center',
-              textDecoration: 'none',
+              fontFamily: 'var(--font-inter)', fontSize: '0.58rem',
+              fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              textAlign: 'center', textDecoration: 'none',
               cursor: product.inStock ? 'pointer' : 'not-allowed',
               transition: 'opacity 0.2s ease',
             }}
-            onMouseEnter={e => product.inStock && (e.currentTarget.style.opacity = '0.85')}
+            onMouseEnter={e => product.inStock && (e.currentTarget.style.opacity = '0.82')}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
             {product.inStock ? 'ORDER VIA WHATSAPP' : 'OUT OF STOCK'}
           </a>
         </div>
-
       </div>
     </motion.div>
   )

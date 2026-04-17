@@ -11,7 +11,6 @@ const LINKS = {
   ],
   Info: [
     { label: 'About Us', href: '/about' },
-    { label: 'Admin Panel', href: '/admin' },
   ],
   Order: [
     { label: 'Order via WhatsApp', href: 'https://wa.me/94775494201', external: true },
@@ -36,7 +35,7 @@ export default function Footer() {
         fontFamily: 'var(--font-bebas)',
         fontSize: 'clamp(10rem, 25vw, 22rem)',
         color: 'transparent',
-        WebkitTextStroke: '1px rgba(200,169,110,0.03)',
+        WebkitTextStroke: '1px rgba(255,255,255,0.03)',
         userSelect: 'none',
         lineHeight: 1,
         bottom: '-3rem',
@@ -198,7 +197,7 @@ export default function Footer() {
                   transition: 'all 0.2s ease',
                   textDecoration: 'none',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; e.currentTarget.style.color = '#ffffff' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">{social.svg}</svg>
@@ -215,7 +214,7 @@ export default function Footer() {
               fontSize: '0.6rem',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: 'var(--gold)',
+              color: 'rgba(255,255,255,0.5)',
               fontWeight: 600,
               marginBottom: '1.25rem',
             }}>

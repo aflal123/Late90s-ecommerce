@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 
-const PromoLoop = dynamic(() => import('./PromoLoop'), {
+const PhotoHero = dynamic(() => import('./PhotoHero'), {
   ssr: false,
   loading: () => (
     <div style={{ height: '100vh', background: '#000' }} />
@@ -10,5 +10,5 @@ const PromoLoop = dynamic(() => import('./PromoLoop'), {
 })
 
 export default function PromoWrapper() {
-  return <PromoLoop />
+  return <PhotoHero />
 }

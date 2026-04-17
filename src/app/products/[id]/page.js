@@ -564,12 +564,12 @@ export default function ProductPage() {
               <p style={{
                 fontSize: '0.6rem',
                 letterSpacing: '0.3em',
-                color: 'var(--gold)',
+                color: 'rgba(255,255,255,0.3)',
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-inter)',
                 marginBottom: '0.5rem',
               }}>
-                // You Might Also Like
+                You Might Also Like
               </p>
               <h2 style={{
                 fontFamily: 'var(--font-bebas)',

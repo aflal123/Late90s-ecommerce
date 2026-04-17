@@ -71,7 +71,7 @@ export default function MarqueeStrip() {
           }}
         >
           <span style={{
-            color: 'var(--gold)',
+            color: 'rgba(255,255,255,0.35)',
             fontSize: '0.5rem',
           }}>
             {msg.icon}
@@ -87,7 +87,7 @@ export default function MarqueeStrip() {
             {msg.text}
           </span>
           <span style={{
-            color: 'var(--gold)',
+            color: 'rgba(255,255,255,0.35)',
             fontSize: '0.5rem',
           }}>
             {msg.icon}
@@ -110,7 +110,7 @@ export default function MarqueeStrip() {
             style={{
               width: i === current ? '16px' : '4px',
               height: '4px',
-              backgroundColor: i === current ? 'var(--gold)' : 'rgba(255,255,255,0.2)',
+              backgroundColor: i === current ? '#ffffff' : 'rgba(255,255,255,0.18)',
               border: 'none',
               cursor: 'pointer',
               padding: 0,

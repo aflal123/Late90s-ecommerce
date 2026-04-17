@@ -4,8 +4,9 @@ import prisma from '@/lib/prisma'
 // GET single order
 export async function GET(request, { params }) {
   try {
+    const { id } = await params
     const order = await prisma.order.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: { product: true }
     })
 
@@ -41,8 +42,9 @@ export async function PATCH(request, { params }) {
       )
     }
 
+    const { id } = await params
     const order = await prisma.order.update({
-      where: { id: params.id },
+      where: { id },
       data: { status },
       include: { product: true }
     })

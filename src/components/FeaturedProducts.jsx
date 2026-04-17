@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState([])
+  const [hovered, setHovered] = useState(null)
 
   useEffect(() => {
     fetch('/api/products')
@@ -17,184 +18,245 @@ export default function FeaturedProducts() {
   }, [])
 
   const placeholders = [
-    { id: 'p1', name: 'Grunge Oversized Tee', price: 2100, category: 'tshirts', badge: 'HOT' },
-    { id: 'p2', name: 'Vintage Wash Hoodie', price: 3800, category: 'hoodies', badge: 'NEW' },
-    { id: 'p3', name: '90s Logo Cargo Pants', price: 4200, category: 'pants', badge: null },
-    { id: 'p4', name: 'Distressed Graphic Tee', price: 1990, category: 'tshirts', badge: null },
-    { id: 'p5', name: 'Skate Culture Jacket', price: 5490, category: 'outerwear', badge: 'NEW' },
-    { id: 'p6', name: 'Washed Baggy Shorts', price: 2190, category: 'pants', badge: null },
+    { id: 'p1', name: 'Grunge Oversized Tee', price: 2100, category: 'T-Shirts', badge: 'HOT' },
+    { id: 'p2', name: 'Vintage Wash Hoodie', price: 3800, category: 'Hoodies', badge: 'NEW' },
+    { id: 'p3', name: '90s Logo Cargo Pants', price: 4200, category: 'Pants', badge: null },
+    { id: 'p4', name: 'Distressed Graphic Tee', price: 1990, category: 'T-Shirts', badge: null },
+    { id: 'p5', name: 'Skate Culture Jacket', price: 5490, category: 'Outerwear', badge: 'NEW' },
+    { id: 'p6', name: 'Washed Baggy Shorts', price: 2190, category: 'Pants', badge: null },
   ]
 
   const displayProducts = products.length > 0 ? products : placeholders
 
   return (
-    <section style={{
-      backgroundColor: '#0a0a0a',
-      padding: '5rem 2rem',
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <section style={{ backgroundColor: '#080808', padding: '7rem 0' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 3rem' }}>
 
-        {/* Header */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          marginBottom: '3rem',
-          flexWrap: 'wrap',
-          gap: '1rem'
-        }}>
-          <div>
-            <p style={{
-              fontSize: '0.75rem',
-              letterSpacing: '0.2em',
-              color: 'var(--gold)',
-              textTransform: 'uppercase',
-              marginBottom: '0.5rem',
-              fontFamily: 'var(--font-inter)'
-            }}>
-              // Trending Now
-            </p>
-            <h2 style={{
+        {/* ── Header ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            marginBottom: '4rem',
+            borderBottom: '1px solid #1c1c1c',
+            paddingBottom: '2rem',
+            flexWrap: 'wrap',
+            gap: '1rem',
+          }}
+        >
+          <div style={{ position: 'relative' }}>
+            {/* Ghost text */}
+            <div style={{
+              position: 'absolute',
+              left: '-0.5rem', top: '50%',
+              transform: 'translateY(-50%)',
               fontFamily: 'var(--font-bebas)',
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              color: '#ffffff',
+              fontSize: 'clamp(5rem, 10vw, 9rem)',
+              color: 'transparent',
+              WebkitTextStroke: '1px rgba(255,255,255,0.03)',
+              letterSpacing: '-0.02em',
               lineHeight: 1,
-              letterSpacing: '0.02em'
-            }}>
-              Featured Drops
-            </h2>
+              userSelect: 'none',
+              pointerEvents: 'none',
+              whiteSpace: 'nowrap',
+              zIndex: 0,
+            }}>FEATURED</div>
+
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <p style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '0.58rem', letterSpacing: '0.35em',
+                color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase',
+                marginBottom: '0.5rem',
+              }}>New Arrivals</p>
+
+              <h2 style={{
+                fontFamily: 'var(--font-bebas)',
+                fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+                color: '#ffffff', lineHeight: 0.95,
+                letterSpacing: '0.02em',
+              }}>Featured Drops</h2>
+            </div>
           </div>
 
-          <Link href="/products">
-            <motion.span
-              whileHover={{ x: 5 }}
+          <Link href="/products" style={{ textDecoration: 'none' }}>
+            <motion.div
+              whileHover={{ x: 4 }}
               style={{
-                fontSize: '0.75rem',
-                letterSpacing: '0.2em',
-                color: 'rgba(255,255,255,0.5)',
+                display: 'flex', alignItems: 'center', gap: '0.6rem',
+                fontSize: '0.62rem', letterSpacing: '0.25em',
+                color: 'rgba(255,255,255,0.35)',
                 textTransform: 'uppercase',
-                cursor: 'pointer',
-                fontFamily: 'var(--font-inter)'
-              }}>
-              VIEW ALL COLLECTION &gt;
-            </motion.span>
+                fontFamily: 'var(--font-inter)', cursor: 'pointer',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
+            >
+              View All Collection
+              <span style={{ fontFamily: 'var(--font-bebas)', fontSize: '1rem' }}>→</span>
+            </motion.div>
           </Link>
-        </div>
+        </motion.div>
 
-        {/* Product Grid */}
+        {/* ── Editorial grid ── */}
+        {/* Desktop: 3-col grid with thin 1px dividers */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '1px',
-          backgroundColor: '#1a1a1a',
-          border: '1px solid #1a1a1a'
-        }}>
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          borderTop: '1px solid #161616',
+          borderLeft: '1px solid #161616',
+        }}
+          className="featured-grid"
+        >
           {displayProducts.map((product, i) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}>
-              <Link href={`/products/${product.id}`}>
-                <motion.div
-                  whileHover={{ backgroundColor: '#141414' }}
-                  style={{
-                    backgroundColor: '#0d0d0d',
-                    padding: '0',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}>
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: i * 0.07 }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                borderRight: '1px solid #161616',
+                borderBottom: '1px solid #161616',
+                position: 'relative',
+                backgroundColor: hovered === i ? '#0d0d0d' : '#080808',
+                transition: 'background-color 0.3s ease',
+              }}
+            >
+              <Link href={`/products/${product.id}`} style={{ textDecoration: 'none', display: 'block' }}>
 
-                  {/* Product Image Area */}
-                  <div style={{
-                    height: '320px',
-                    backgroundColor: '#111111',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}>
-                    {product.image ? (
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      />
-                    ) : (
-                      <div style={{
-                        fontFamily: 'var(--font-bebas)',
-                        fontSize: '5rem',
-                        color: 'rgba(255,255,255,0.05)',
-                        letterSpacing: '0.1em'
-                      }}>
-                        L90S
-                      </div>
-                    )}
-
-                    {/* Badge */}
-                    {product.badge && (
-                      <div style={{
-                        position: 'absolute',
-                        top: '1rem',
-                        left: '1rem',
-                        backgroundColor: product.badge === 'HOT' ? '#dc2626' : '#16a34a',
-                        color: '#ffffff',
-                        fontSize: '0.6rem',
-                        fontWeight: 700,
-                        letterSpacing: '0.15em',
-                        padding: '0.25rem 0.6rem',
-                        fontFamily: 'var(--font-inter)'
-                      }}>
-                        {product.badge}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Product Info */}
-                  <div style={{ padding: '1.25rem' }}>
-                    <h3 style={{
-                      fontFamily: 'var(--font-inter)',
-                      fontSize: '0.85rem',
-                      fontWeight: 600,
-                      color: '#ffffff',
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase',
-                      marginBottom: '0.4rem'
-                    }}>
-                      {product.name}
-                    </h3>
+                {/* Image */}
+                <div style={{
+                  position: 'relative',
+                  aspectRatio: i === 0 ? '3/4' : i === 4 ? '3/4' : '4/5',
+                  overflow: 'hidden',
+                  backgroundColor: '#0a0a0a',
+                }}>
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      style={{
+                        width: '100%', height: '100%', objectFit: 'cover',
+                        transform: hovered === i ? 'scale(1.04)' : 'scale(1)',
+                        transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                      }}
+                    />
+                  ) : (
                     <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
+                      width: '100%', height: '100%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <span style={{
-                        fontFamily: 'var(--font-inter)',
-                        fontSize: '0.85rem',
-                        color: 'rgba(255,255,255,0.5)'
-                      }}>
-                        LKR {product.price?.toLocaleString()}
-                      </span>
-                      <span style={{
-                        fontSize: '0.65rem',
-                        color: 'rgba(255,255,255,0.25)',
+                        fontFamily: 'var(--font-bebas)',
+                        fontSize: '5rem', color: '#161616',
                         letterSpacing: '0.1em',
-                        textTransform: 'capitalize',
-                        fontFamily: 'var(--font-inter)'
-                      }}>
-                        {product.category}
-                      </span>
+                      }}>L90S</span>
                     </div>
+                  )}
+
+                  {/* Item number */}
+                  <div style={{
+                    position: 'absolute', top: '1rem', left: '1rem',
+                    fontFamily: 'var(--font-bebas)',
+                    fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)',
+                    letterSpacing: '0.2em',
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
                   </div>
-                </motion.div>
+
+                  {/* Badge */}
+                  {(product.badge || product.featured) && (
+                    <div style={{
+                      position: 'absolute', top: '1rem', right: '1rem',
+                      backgroundColor: product.badge === 'HOT' ? '#dc2626' : 'var(--gold)',
+                      color: product.badge === 'HOT' ? '#fff' : '#000',
+                      padding: '0.15rem 0.55rem',
+                      fontFamily: 'var(--font-inter)', fontSize: '0.5rem',
+                      fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+                    }}>
+                      {product.badge || 'NEW'}
+                    </div>
+                  )}
+
+                  {/* Hover gradient */}
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)',
+                    opacity: hovered === i ? 1 : 0,
+                    transition: 'opacity 0.35s ease',
+                  }} />
+                </div>
+
+                {/* Text block */}
+                <div style={{ padding: '1.1rem 1.25rem 1.4rem' }}>
+                  <span style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-inter)', fontSize: '0.52rem',
+                    letterSpacing: '0.28em', color: 'rgba(255,255,255,0.3)',
+                    textTransform: 'uppercase', marginBottom: '0.4rem',
+                  }}>{product.category}</span>
+                  <h3 style={{
+                    fontFamily: 'var(--font-bebas)',
+                    fontSize: '1.35rem', color: '#ffffff',
+                    letterSpacing: '0.04em', lineHeight: 1.05,
+                    marginBottom: '0.4rem',
+                    transition: 'color 0.2s ease',
+                    color: hovered === i ? 'var(--gold)' : '#ffffff',
+                  }}>{product.name}</h3>
+                  <span style={{
+                    fontFamily: 'var(--font-inter)', fontSize: '0.78rem',
+                    fontWeight: 700, color: 'rgba(255,255,255,0.55)',
+                    letterSpacing: '0.04em',
+                  }}>LKR {product.price?.toLocaleString()}</span>
+                </div>
               </Link>
             </motion.div>
           ))}
         </div>
+
+        {/* ── Footer CTA ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{ textAlign: 'center', paddingTop: '4rem' }}
+        >
+          <Link href="/products">
+            <motion.button
+              whileHover={{ backgroundColor: '#e8c47e', scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                backgroundColor: 'var(--gold)', color: '#000',
+                border: 'none', padding: '1rem 3.5rem',
+                fontFamily: 'var(--font-inter)', fontSize: '0.65rem',
+                fontWeight: 700, letterSpacing: '0.25em',
+                textTransform: 'uppercase', cursor: 'pointer',
+                transition: 'background-color 0.2s ease',
+              }}
+            >Shop Full Collection</motion.button>
+          </Link>
+        </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .featured-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 580px) {
+          .featured-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
