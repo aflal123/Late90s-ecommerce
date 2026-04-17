@@ -244,9 +244,11 @@ export default function AdminPage() {
       if (data.success) {
         showToast('Product deleted.')
         setProducts(prev => prev.filter(p => p.id !== id))
+      } else {
+        showToast(data.message || 'Delete failed.', 'error')
       }
-    } catch {
-      showToast('Delete failed.', 'error')
+    } catch (err) {
+      showToast(err?.message || 'Delete failed.', 'error')
     }
     setDeleteConfirm(null)
   }

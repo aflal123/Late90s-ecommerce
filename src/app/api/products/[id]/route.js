@@ -85,10 +85,11 @@ export async function DELETE(request, { params }) {
       )
     }
 
-    // Delete related orders first (foreign key constraint)
-    await prisma.order.deleteMany({ where: { productId: id } })
-
-    await prisma.product.delete({ where: { id } })
+    // Delete related orders first, then product — in a transaction
+    await prisma.$transaction([
+      prisma.order.deleteMany({ where: { productId: id } }),
+      prisma.product.delete({ where: { id } }),
+    ])
 
     return NextResponse.json(
       { success: true, message: 'Product deleted successfully' }
