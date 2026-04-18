@@ -100,23 +100,35 @@ export default function MarqueeStrip() {
         position: 'absolute',
         right: '2rem',
         display: 'flex',
-        gap: '4px',
+        gap: '8px',
         zIndex: 2,
       }}>
         {messages.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
+            aria-label={`Go to message ${i + 1} of ${messages.length}`}
+            aria-current={i === current ? 'true' : 'false'}
             style={{
-              width: i === current ? '16px' : '4px',
-              height: '4px',
-              backgroundColor: i === current ? '#ffffff' : 'rgba(255,255,255,0.18)',
+              width: '24px', height: '24px',
+              backgroundColor: 'transparent',
               border: 'none',
               cursor: 'pointer',
               padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               transition: 'all 0.3s ease',
             }}
-          />
+          >
+            <span style={{
+              width: i === current ? '16px' : '4px',
+              height: '4px',
+              backgroundColor: i === current ? '#ffffff' : 'rgba(255,255,255,0.18)',
+              display: 'block',
+              transition: 'all 0.3s ease',
+            }} />
+          </button>
         ))}
       </div>
     </div>

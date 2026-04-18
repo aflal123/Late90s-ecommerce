@@ -104,7 +104,7 @@ export default function Navbar() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
 
           {/* Cart */}
-          <Link href="/cart" style={{
+          <Link href="/cart" aria-label="View shopping cart" style={{
             width: '36px', height: '36px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             color: textColor, opacity: 0.65,
@@ -139,7 +139,7 @@ export default function Navbar() {
                 <button style={{
                   fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase',
                   color: '#000', backgroundColor: 'var(--gold)',
-                  border: 'none', padding: '0.6rem 1.4rem',
+                  border: 'none', padding: '0.85rem 1.6rem',
                   cursor: 'pointer', fontFamily: 'var(--font-inter)',
                   fontWeight: 700, marginLeft: '0.5rem',
                   transition: 'opacity 0.2s ease',
@@ -155,6 +155,8 @@ export default function Navbar() {
           {isMobile && (
             <button
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
               style={{
                 width: '36px', height: '36px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',

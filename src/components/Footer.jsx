@@ -86,7 +86,7 @@ export default function Footer() {
               style={{
                 fontFamily: 'var(--font-inter)',
                 fontSize: '0.82rem',
-                color: 'rgba(255,255,255,0.4)',
+                color: 'rgba(255,255,255,0.7)',
                 marginTop: '0.6rem',
                 letterSpacing: '0.03em',
               }}
@@ -166,7 +166,7 @@ export default function Footer() {
           <p style={{
             fontFamily: 'var(--font-inter)',
             fontSize: '0.82rem',
-            color: 'rgba(255,255,255,0.35)',
+            color: 'rgba(255,255,255,0.7)',
             lineHeight: 1.85,
             maxWidth: '280px',
             marginBottom: '1.75rem',
@@ -186,6 +186,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={social.label}
+                aria-label={`Follow Late90s on ${social.label}`}
                 style={{
                   width: '36px',
                   height: '36px',
@@ -193,12 +194,12 @@ export default function Footer() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'rgba(255,255,255,0.4)',
+                  color: 'rgba(255,255,255,0.75)',
                   transition: 'all 0.2s ease',
                   textDecoration: 'none',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; e.currentTarget.style.color = '#ffffff' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)' }}
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">{social.svg}</svg>
               </a>
@@ -209,17 +210,17 @@ export default function Footer() {
         {/* Link columns */}
         {Object.entries(LINKS).map(([title, links]) => (
           <div key={title}>
-            <h4 style={{
+            <h3 style={{
               fontFamily: 'var(--font-inter)',
               fontSize: '0.6rem',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.5)',
+              color: 'rgba(255,255,255,0.75)',
               fontWeight: 600,
               marginBottom: '1.25rem',
             }}>
               {title}
-            </h4>
+            </h3>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
               {links.map(link => (
                 <li key={link.label}>
@@ -231,7 +232,7 @@ export default function Footer() {
                       style={{
                         fontFamily: 'var(--font-inter)',
                         fontSize: '0.78rem',
-                        color: 'rgba(255,255,255,0.45)',
+                        color: 'rgba(255,255,255,0.7)',
                         textDecoration: 'none',
                         transition: 'color 0.2s ease',
                         letterSpacing: '0.03em',
@@ -247,7 +248,7 @@ export default function Footer() {
                       style={{
                         fontFamily: 'var(--font-inter)',
                         fontSize: '0.78rem',
-                        color: 'rgba(255,255,255,0.45)',
+                        color: 'rgba(255,255,255,0.7)',
                         textDecoration: 'none',
                         transition: 'color 0.2s ease',
                         letterSpacing: '0.03em',
@@ -282,7 +283,7 @@ export default function Footer() {
         <span style={{
           fontFamily: 'var(--font-inter)',
           fontSize: '0.65rem',
-          color: 'rgba(255,255,255,0.2)',
+          color: 'rgba(255,255,255,0.6)',
           letterSpacing: '0.08em',
         }}>
           {year} Late90s. All rights reserved.
@@ -290,7 +291,7 @@ export default function Footer() {
         <span style={{
           fontFamily: 'var(--font-inter)',
           fontSize: '0.65rem',
-          color: 'rgba(255,255,255,0.2)',
+          color: 'rgba(255,255,255,0.6)',
           letterSpacing: '0.08em',
         }}>
           Made in Sri Lanka &nbsp;·&nbsp; Built by{' '}

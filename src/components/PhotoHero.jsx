@@ -134,7 +134,7 @@ export default function PhotoHero() {
               <button
                 style={{
                   background: '#fff', color: '#000', border: 'none',
-                  padding: '0.9rem 2.5rem', fontFamily: 'var(--font-inter)',
+                  padding: '1rem 2.5rem', fontFamily: 'var(--font-inter)',
                   fontSize: '0.62rem', fontWeight: 700,
                   letterSpacing: '0.25em', textTransform: 'uppercase', cursor: 'pointer',
                   transition: 'opacity 0.2s ease',
@@ -175,14 +175,23 @@ export default function PhotoHero() {
             <button
               key={i}
               onClick={() => setCurrent(i)}
+              aria-label={`Go to slide ${i + 1} of ${images.length}`}
+              aria-current={i === current ? 'true' : 'false'}
               style={{
+                width: '24px', height: '24px',
+                background: 'transparent', border: 'none',
+                cursor: 'pointer', padding: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              <span style={{
                 width: i === current ? '24px' : '6px',
                 height: '2px',
                 background: i === current ? '#fff' : 'rgba(255,255,255,0.2)',
-                border: 'none', cursor: 'pointer', padding: 0,
                 transition: 'all 0.4s ease',
-              }}
-            />
+                display: 'block',
+              }} />
+            </button>
           ))}
         </div>
       )}
