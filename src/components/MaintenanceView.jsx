@@ -8,42 +8,44 @@ import { MaintenanceFooter } from './MaintenanceFooter'
 
 export default function MaintenanceView() {
   return (
-    <div className="min-h-[100svh] w-full bg-[#0d0d0d] text-[#f5f5f5] flex flex-col justify-between overflow-x-hidden selection:bg-zinc-800 selection:text-white">
-      {/* Top Navigation / Beacon */}
+    <div className="h-svh w-full bg-[#0d0d0d] text-[#f5f5f5] flex flex-col justify-between overflow-hidden selection:bg-zinc-800 selection:text-white">
+      {/* 1. Top Navigation Bar */}
       <MaintenanceHeader />
 
-      {/* Hero Content & Center Piece */}
-      <main className="w-full max-w-4xl mx-auto px-4 py-4 md:py-8 flex flex-col items-center justify-center text-center my-auto">
+      {/* 2. Main Middle Container (Centered vertically, max single viewport height) */}
+      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-2 flex flex-col items-center justify-center text-center overflow-hidden my-auto">
         {/* Suspended Clothes Hanger & Garment Tag */}
-        <HangerAnimation isRestocking={true} />
+        <div className="w-full flex justify-center">
+          <HangerAnimation isRestocking={true} />
+        </div>
 
-        {/* Headline */}
+        {/* Headline & Subtitle */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 sm:mt-6 max-w-2xl px-2"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-1 sm:mt-2 max-w-xl px-2"
         >
-          <h1 className="font-syne font-black text-2xl sm:text-4xl md:text-5xl tracking-[0.14em] uppercase text-[#f5f5f5] leading-tight">
+          <h1 className="font-syne font-black text-lg sm:text-2xl md:text-3xl tracking-[0.14em] uppercase text-[#f5f5f5] leading-tight">
             PREPARING THE NEXT DROP
           </h1>
-          <p className="mt-3 text-xs sm:text-sm font-mono-custom text-zinc-400 max-w-lg mx-auto leading-relaxed">
+          <p className="mt-1.5 text-[10.5px] sm:text-xs font-mono-custom text-zinc-400 max-w-md mx-auto leading-relaxed">
             We are currently organizing new pieces and refining the online store. Check back shortly.
           </p>
         </motion.div>
 
         {/* Early Access Notification Box */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="w-full mt-2"
         >
           <NotificationBox />
         </motion.div>
       </main>
 
-      {/* Footer */}
+      {/* 3. Bottom Footer Bar */}
       <MaintenanceFooter />
     </div>
   )

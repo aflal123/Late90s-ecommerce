@@ -8,54 +8,45 @@ export function MaintenanceFooter() {
     <motion.footer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
-      className="w-full max-w-6xl mx-auto px-6 py-6 sm:py-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-custom text-zinc-400"
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="w-full max-w-6xl mx-auto h-10 sm:h-12 px-4 sm:px-6 border-t border-zinc-800/80 flex items-center justify-between gap-2 text-[10.5px] sm:text-xs font-mono-custom text-zinc-400 shrink-0"
     >
       {/* Copyright on left */}
-      <div className="flex items-center gap-2 tracking-wider">
+      <div className="flex items-center gap-1.5 tracking-wider truncate">
         <span>© {new Date().getFullYear()} LATE90s.</span>
-        <span className="text-zinc-600 hidden xs:inline">ALL RIGHTS RESERVED.</span>
+        <span className="text-zinc-600 hidden md:inline">ALL RIGHTS RESERVED.</span>
       </div>
 
       {/* Social Links & EvliqLabs Credit */}
-      <div className="flex items-center gap-5 sm:gap-6 tracking-widest uppercase flex-wrap justify-center">
+      <div className="flex items-center gap-3 sm:gap-5 tracking-wider uppercase text-[10px] sm:text-[11px]">
         <a
           href="https://www.instagram.com/late90s_outlet/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 hover:text-[#f5f5f5] transition-colors"
+          className="inline-flex items-center gap-0.5 hover:text-[#f5f5f5] transition-colors"
         >
           <span>INSTAGRAM</span>
-          <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+          <ArrowUpRight className="w-2.5 h-2.5 text-zinc-500" />
         </a>
 
         <a
           href="https://www.tiktok.com/@late90s_"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 hover:text-[#f5f5f5] transition-colors"
+          className="inline-flex items-center gap-0.5 hover:text-[#f5f5f5] transition-colors"
         >
           <span>TIKTOK</span>
-          <ArrowUpRight className="w-3 h-3 text-zinc-500" />
-        </a>
-
-        <a
-          href="https://www.late90s.online"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-1 hover:text-emerald-400 text-zinc-400 transition-colors"
-        >
-          <span>LATE90S.ONLINE</span>
+          <ArrowUpRight className="w-2.5 h-2.5 text-zinc-500" />
         </a>
 
         <a
           href="https://www.evliqlabs.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 hover:text-emerald-400 text-zinc-500 transition-colors border-l border-zinc-800 pl-4"
+          className="inline-flex items-center gap-0.5 hover:text-emerald-400 text-zinc-400 transition-colors border-l border-zinc-800 pl-3"
         >
           <span>BY EVLIQLABS</span>
-          <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+          <ArrowUpRight className="w-2.5 h-2.5 text-zinc-500" />
         </a>
       </div>
     </motion.footer>
