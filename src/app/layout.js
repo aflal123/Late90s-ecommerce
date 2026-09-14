@@ -1,8 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import './globals.css'
 
 const GA_ID = 'G-W7YY7DN10E'
@@ -232,9 +231,7 @@ export default function RootLayout({ children }) {
             `}
           </Script>
 
-          <Navbar />
-          {children}
-          <Footer />
+          <LayoutWrapper>{children}</LayoutWrapper>
         </body>
       </html>
     </ClerkProvider>

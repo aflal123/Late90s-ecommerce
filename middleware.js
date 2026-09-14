@@ -38,6 +38,15 @@ export default async function middleware(req) {
   try {
     const { pathname } = req.nextUrl
 
+    // Allow static files, api routes, and Next.js internal assets
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.includes('.')
+    ) {
+      return NextResponse.next()
+    }
+
     // Admin login page — redirect to /admin if already logged in
     if (pathname === '/admin/login') {
       const token = req.cookies.get(ADMIN_COOKIE)?.value
@@ -47,13 +56,18 @@ export default async function middleware(req) {
       return NextResponse.next()
     }
 
-    // All /admin routes (except /admin/login above) — require cookie
+    // All /admin routes — require cookie
     if (pathname.startsWith('/admin')) {
       const token = req.cookies.get(ADMIN_COOKIE)?.value
       if (!(await verifyAdminCookie(token))) {
         return NextResponse.redirect(new URL('/admin/login', req.url))
       }
       return NextResponse.next()
+    }
+
+    // Maintenance Mode: Rewrite all other public routes (like /products, /about, /cart) to /
+    if (pathname !== '/') {
+      return NextResponse.rewrite(new URL('/', req.url))
     }
 
     return NextResponse.next()
@@ -63,5 +77,5 @@ export default async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/admin', '/admin/(.*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }
