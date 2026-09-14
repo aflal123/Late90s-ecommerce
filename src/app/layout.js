@@ -1,5 +1,5 @@
 import { ClerkProvider } from '@clerk/nextjs'
-import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
+import { Bebas_Neue, Inter, Playfair_Display, Syne, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import './globals.css'
@@ -20,6 +20,18 @@ const inter = Inter({
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  weight: ['700', '800'],
+})
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono-custom',
+  weight: ['400', '700'],
 })
 
 export const metadata = {
@@ -216,7 +228,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up">
       <html lang="en">
-        <body className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
+        <body className={`${bebas.variable} ${inter.variable} ${playfair.variable} ${syne.variable} ${spaceMono.variable}`}>
           {/* Google Analytics 4 */}
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
