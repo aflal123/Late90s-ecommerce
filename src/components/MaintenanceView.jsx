@@ -160,7 +160,7 @@ export default function MaintenanceView() {
       </section>
 
       {/* 3. BOTTOM FOOTER SECTION */}
-      <footer className="relative z-10 w-full pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] md:text-xs font-mono tracking-widest text-white/40 uppercase">
+      <footer className="relative z-10 w-full pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] md:text-xs font-mono tracking-widest text-white/40 uppercase">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -174,8 +174,27 @@ export default function MaintenanceView() {
         <motion.div
           initial="hidden"
           animate="visible"
+          variants={fadeIn(0.65)}
+          className="text-center"
+        >
+          <span>
+            MAINTENANCE BY{' '}
+            <a
+              href="https://www.evliqlabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-[#c8a96e] transition-colors duration-200 underline decoration-white/30 underline-offset-4"
+            >
+              EVLIQLABS
+            </a>
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
           variants={fadeIn(0.7)}
-          className="text-center sm:text-right"
+          className="text-center md:text-right"
         >
           <span>LATE90S &copy; {new Date().getFullYear()} &mdash; COLOMBO, SRI LANKA</span>
         </motion.div>
