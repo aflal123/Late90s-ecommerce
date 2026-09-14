@@ -5,19 +5,21 @@
   --font-bebas: 'Bebas Neue', sans-serif;
   --font-inter: 'Inter', sans-serif;
   --font-playfair: 'Playfair Display', serif;
-  --bg: #0a0a0a;
-  --text: #ffffff;
-  --card: #141414;
-  --border: #2a2a2a;
-  --hero-bg: #0a0a0a;
-  --ghost-text: rgba(255,255,255,0.06);
-  --subtitle: rgba(255,255,255,0.5);
-  --muted: rgba(255,255,255,0.25);
-  --product-bg: #111111;
-  --product-hover: #141414;
-  --input-bg: #1a1a1a;
+  --font-syne: 'Syne', sans-serif;
+  --font-mono-custom: 'Space Mono', monospace;
+  --bg: #0d0d0d;
+  --text: #f5f5f5;
+  --card: #141416;
+  --border: #27272a;
 }
 
+.font-syne {
+  font-family: var(--font-syne), 'Syne', sans-serif;
+}
+
+.font-mono-custom {
+  font-family: var(--font-mono-custom), 'Space Mono', monospace;
+}
 
 * {
   margin: 0;
@@ -29,9 +31,9 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-inter);
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
-
