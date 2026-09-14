@@ -21,16 +21,16 @@ export function HangerAnimation({ isRestocking = true }) {
     : [3.8, -3.8, 3.8]
 
   return (
-    <div className="relative w-full max-w-[320px] sm:max-w-[380px] h-[200px] sm:h-[230px] flex items-start justify-center select-none mx-auto overflow-visible">
+    <div className="relative w-full max-w-[320px] sm:max-w-[380px] h-[200px] sm:h-[230px] flex flex-col items-center justify-center select-none mx-auto overflow-visible">
       {/* Ceiling / Rack Suspension Rail */}
-      <div className="absolute top-0 z-10 flex flex-col items-center pointer-events-none">
+      <div className="absolute top-0 z-10 flex flex-col items-center pointer-events-none w-full">
         {/* Metal clothes rack rail horizontal bar */}
         <div className="w-48 sm:w-64 h-1.5 bg-gradient-to-r from-transparent via-zinc-400 to-transparent rounded-full opacity-90 shadow-[0_1px_6px_rgba(0,0,0,0.9)]" />
       </div>
 
       {/* Main Pendulum: Clothes Hanger Assembly */}
       <motion.div
-        className="relative flex flex-col items-center cursor-grab active:cursor-grabbing z-20 scale-90 sm:scale-95 origin-top"
+        className="relative flex flex-col items-center justify-center cursor-grab active:cursor-grabbing z-20 scale-90 sm:scale-95 origin-top mx-auto"
         style={{
           transformOrigin: '50% 8px',
         }}
@@ -45,43 +45,43 @@ export function HangerAnimation({ isRestocking = true }) {
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
       >
-        {/* SVG Clothing Hanger */}
+        {/* SVG Clothing Hanger - 100% Symmetrical around Center X=140 */}
         <svg
           viewBox="0 0 280 114"
-          className="w-[200px] sm:w-[230px] h-auto drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)] overflow-visible"
+          className="w-[200px] sm:w-[230px] h-auto drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)] overflow-visible mx-auto"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Swivel Hook at top */}
+          {/* Swivel Hook at top - Perfectly Centered */}
           <path
-            d="M 152 20 C 153 14, 149 7.5, 140 7.5 C 131 7.5, 126 14, 126 21 C 126 28, 137 34, 137 42"
+            d="M 140 10 C 147 10, 151 15, 151 22 C 151 30, 140 34, 140 42"
             stroke="#d4d4d8"
             strokeWidth="3.4"
             strokeLinecap="round"
             className="drop-shadow-sm"
           />
-          {/* Hook rounded metallic tip */}
-          <circle cx="152" cy="20" r="2" fill="#f4f4f5" />
+          {/* Hook tip */}
+          <circle cx="140" cy="10" r="2" fill="#f4f4f5" />
 
           {/* Swivel base mount collar */}
           <rect x="135.5" y="41" width="9" height="6.5" rx="1.5" fill="#3f3f46" stroke="#a1a1aa" strokeWidth="0.8" />
 
-          {/* Wooden / Matte Black Streetwear Hanger Body */}
+          {/* Wooden / Matte Black Streetwear Hanger Body - Symmetrical (X=20 to X=260) */}
           <path
-            d="M 140 46 L 268 92 C 274 94, 276 100, 271 104 C 267 107, 260 105, 256 102 L 140 60 L 24 102 C 20 105, 13 107, 9 104 C 4 100, 6 94, 12 92 Z"
+            d="M 140 46 L 260 92 C 265 94, 267 99, 262 103 C 258 106, 252 104, 248 101 L 140 60 L 32 101 C 28 104, 22 106, 18 103 C 13 99, 15 94, 20 92 Z"
             fill="url(#hangerMatteGradient)"
             stroke="#52525b"
             strokeWidth="1.2"
           />
 
-          {/* Shoulder notches */}
+          {/* Shoulder notches (Symmetrical 90px from center 140) */}
           <path d="M 230 80 C 233 82, 238 82, 240 80" stroke="#3f3f46" strokeWidth="2" strokeLinecap="round" />
           <path d="M 50 80 C 47 82, 42 82, 40 80" stroke="#3f3f46" strokeWidth="2" strokeLinecap="round" />
 
-          {/* Lower crossbar */}
-          <line x1="24" y1="99" x2="256" y2="99" stroke="#3f3f46" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Lower crossbar (Symmetrical 20 to 260) */}
+          <line x1="20" y1="99" x2="260" y2="99" stroke="#3f3f46" strokeWidth="2.5" strokeLinecap="round" />
 
-          {/* Waxed cord loop holding tag */}
+          {/* Waxed cord loop holding tag - Perfectly Centered */}
           <rect x="137.5" y="96.5" width="5" height="5.5" rx="1.5" fill="#52525b" stroke="#a1a1aa" strokeWidth="0.8" />
           <line x1="138.5" y1="102" x2="138.5" y2="114" stroke="#a1a1aa" strokeWidth="1.2" />
           <line x1="141.5" y1="102" x2="141.5" y2="114" stroke="#a1a1aa" strokeWidth="1.2" />
@@ -99,7 +99,7 @@ export function HangerAnimation({ isRestocking = true }) {
 
         {/* Suspended Garment Tag Assembly */}
         <motion.div
-          className="relative -mt-1 flex flex-col items-center"
+          className="relative -mt-1 flex flex-col items-center justify-center mx-auto"
           style={{
             transformOrigin: '50% 0px',
           }}
@@ -122,7 +122,7 @@ export function HangerAnimation({ isRestocking = true }) {
           </div>
 
           {/* Garment Tag Card */}
-          <div className="relative w-[190px] sm:w-[210px] bg-[#121214] border border-zinc-700/90 rounded-md p-2.5 sm:p-3 text-zinc-100 shadow-[0_16px_32px_-8px_rgba(0,0,0,0.9)] backdrop-blur-md overflow-hidden">
+          <div className="relative w-[190px] sm:w-[210px] bg-[#121214] border border-zinc-700/90 rounded-md p-2.5 sm:p-3 text-zinc-100 shadow-[0_16px_32px_-8px_rgba(0,0,0,0.9)] backdrop-blur-md overflow-hidden mx-auto">
             {/* Eyelet Hole */}
             <div className="absolute top-1.5 left-1/2 -translate-x-1/2 flex items-center justify-center">
               <div className="w-3 h-3 rounded-full border border-zinc-400 bg-[#0d0d0d] shadow-inner flex items-center justify-center">
@@ -132,10 +132,10 @@ export function HangerAnimation({ isRestocking = true }) {
 
             {/* Tag Header: Brand Mark LATE90S */}
             <div className="text-center pt-1 px-1">
-              <span className="font-['Bebas_Neue',sans-serif] font-bold text-lg sm:text-xl tracking-[0.22em] text-white block leading-none">
+              <span className="font-['Bebas_Neue',sans-serif] font-bold text-lg sm:text-xl tracking-[0.22em] text-white block leading-none text-center">
                 LATE<span className="text-[#c8a96e]">90S</span>
               </span>
-              <span className="text-[8px] font-mono-custom tracking-[0.22em] text-zinc-400 uppercase mt-0.5 block">
+              <span className="text-[8px] font-mono-custom tracking-[0.22em] text-zinc-400 uppercase mt-0.5 block text-center">
                 COLLECTION 2026
               </span>
             </div>
