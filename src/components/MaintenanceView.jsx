@@ -13,7 +13,7 @@ export default function MaintenanceView() {
       <MaintenanceHeader />
 
       {/* 2. Main Middle Container (Centered vertically, max single viewport height) */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-2 flex flex-col items-center justify-center text-center overflow-hidden my-auto">
+      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-1.5 flex flex-col items-center justify-center text-center overflow-hidden my-auto">
         {/* Suspended Clothes Hanger & Garment Tag */}
         <div className="w-full flex justify-center">
           <HangerAnimation isRestocking={true} />
@@ -26,10 +26,10 @@ export default function MaintenanceView() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="mt-1 sm:mt-2 max-w-xl px-2"
         >
-          <h1 className="font-syne font-black text-lg sm:text-2xl md:text-3xl tracking-[0.14em] uppercase text-[#f5f5f5] leading-tight">
+          <h1 className="font-['Bebas_Neue',sans-serif] font-bold text-2xl sm:text-3xl md:text-4xl tracking-[0.16em] uppercase text-[#f5f5f5] leading-tight">
             PREPARING THE NEXT DROP
           </h1>
-          <p className="mt-1.5 text-[10.5px] sm:text-xs font-mono-custom text-zinc-400 max-w-md mx-auto leading-relaxed">
+          <p className="mt-1.5 text-[11px] sm:text-xs font-mono-custom text-zinc-400 max-w-md mx-auto leading-relaxed">
             We are currently organizing new pieces and refining the online store. Check back shortly.
           </p>
         </motion.div>
