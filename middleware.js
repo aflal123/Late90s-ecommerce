@@ -38,10 +38,12 @@ export default async function middleware(req) {
   try {
     const { pathname } = req.nextUrl
 
-    // Allow static files, api routes, and Next.js internal assets
+    // Allow static assets, Next internal files, APIs, Clerk auth, robots, sitemap
     if (
       pathname.startsWith('/_next') ||
       pathname.startsWith('/api') ||
+      pathname.startsWith('/sign-in') ||
+      pathname.startsWith('/sign-up') ||
       pathname.includes('.')
     ) {
       return NextResponse.next()
@@ -65,7 +67,7 @@ export default async function middleware(req) {
       return NextResponse.next()
     }
 
-    // Maintenance Mode: Rewrite all other public routes (like /products, /about, /cart) to /
+    // Maintenance Mode: Rewrite public routes to / (Maintenance View)
     if (pathname !== '/') {
       return NextResponse.rewrite(new URL('/', req.url))
     }
