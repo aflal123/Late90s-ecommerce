@@ -12,34 +12,34 @@ export default function MaintenanceView() {
       {/* 1. Top Navigation Bar */}
       <MaintenanceHeader />
 
-      {/* 2. Main Middle Container (Centered vertically, max single viewport height) */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-1.5 flex flex-col items-center justify-center text-center overflow-hidden my-auto">
-        {/* Suspended Clothes Hanger & Garment Tag */}
-        <div className="w-full flex justify-center">
+      {/* 2. Unified Perfectly Centered Hero Stack */}
+      <main className="flex-1 w-full max-w-2xl mx-auto px-4 flex flex-col items-center justify-center text-center overflow-hidden my-auto gap-2 sm:gap-3">
+        {/* Hanger Centerpiece */}
+        <div className="w-full flex justify-center shrink-0">
           <HangerAnimation isRestocking={true} />
         </div>
 
-        {/* Headline & Subtitle */}
+        {/* Headline & Subtitle Stack */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-1 sm:mt-2 max-w-xl px-2"
+          className="flex flex-col items-center justify-center max-w-lg px-2 shrink-0"
         >
-          <h1 className="font-['Bebas_Neue',sans-serif] font-bold text-2xl sm:text-3xl md:text-4xl tracking-[0.16em] uppercase text-[#f5f5f5] leading-tight">
+          <h1 className="font-['Bebas_Neue',sans-serif] font-bold text-2xl sm:text-3xl md:text-4xl tracking-[0.16em] uppercase text-[#f5f5f5] leading-none">
             PREPARING THE NEXT DROP
           </h1>
-          <p className="mt-1.5 text-[11px] sm:text-xs font-mono-custom text-zinc-400 max-w-md mx-auto leading-relaxed">
+          <p className="mt-1.5 text-[10.5px] sm:text-xs font-mono-custom text-zinc-400 max-w-md mx-auto leading-relaxed">
             We are currently organizing new pieces and refining the online store. Check back shortly.
           </p>
         </motion.div>
 
         {/* Early Access Notification Box */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="w-full mt-2"
+          className="w-full max-w-sm shrink-0"
         >
           <NotificationBox />
         </motion.div>
