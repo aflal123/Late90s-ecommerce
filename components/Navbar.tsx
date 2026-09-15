@@ -22,31 +22,31 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 glass-panel border-b border-white/10 bg-black/85">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-black/90 backdrop-blur-xl transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 items-center h-16 sm:h-20">
           
-          {/* Brand Logo */}
-          <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center group">
-              <span className="text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase text-white group-hover:text-[#dfff00] transition-colors">
+          {/* Brand Logo - Left */}
+          <div className="flex items-center justify-start">
+            <Link href="/" className="inline-flex items-center group">
+              <span className="text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase text-white group-hover:text-[#dfff00] transition-colors leading-none">
                 LATE<span className="text-[#dfff00]">90S</span>
               </span>
             </Link>
           </div>
 
-          {/* Minimalist Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 text-xs font-mono-tech tracking-widest uppercase">
+          {/* Minimalist Navigation - Dead Center in Straight Line */}
+          <nav className="hidden md:flex items-center justify-center space-x-8 text-xs font-mono-tech tracking-widest uppercase">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors py-1 ${
+                  className={`transition-colors py-1.5 border-b-2 ${
                     isActive
-                      ? 'text-[#dfff00] font-bold border-b-2 border-[#dfff00]'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'text-[#dfff00] font-bold border-[#dfff00]'
+                      : 'text-zinc-400 hover:text-white border-transparent'
                   }`}
                 >
                   <span>{link.name}</span>
@@ -55,8 +55,8 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Action Buttons: Only Theme Toggle, Cart, and Mobile Menu */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Action Buttons - Right */}
+          <div className="flex items-center justify-end space-x-2 sm:space-x-3">
             
             {/* Theme Toggle (Dark / Light) */}
             <button

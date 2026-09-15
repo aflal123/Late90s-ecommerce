@@ -26,35 +26,85 @@ const slideVariants = {
   }),
 };
 
-export default function HeroImageSlider() {
-  const [products, setProducts] = useState<ProductType[]>([]);
+const FALLBACK_HERO_PRODUCTS: ProductType[] = [
+  {
+    id: 'hero-drop-1',
+    name: 'LATE90S Acid Cyber Vintage Tee',
+    price: 6500,
+    category: 'tees',
+    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1600&auto=format&fit=crop',
+    featured: true,
+    sizes: ['M', 'L', 'XL'],
+    inStock: true,
+    description: 'Heavyweight 260+ GSM vintage washed drop-shoulder boxy tee.',
+  },
+  {
+    id: 'hero-drop-2',
+    name: 'Distressed 450 GSM Heavy French Terry Hoodie',
+    price: 14500,
+    category: 'hoodies',
+    image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1600&auto=format&fit=crop',
+    featured: true,
+    sizes: ['S', 'M', 'L', 'XL'],
+    inStock: true,
+    description: 'Custom boxy heavyweight hoodie with distressed hems.',
+  },
+  {
+    id: 'hero-drop-3',
+    name: 'Subway Cyber Drift Track Jacket',
+    price: 18500,
+    category: 'outerwear',
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1600&auto=format&fit=crop',
+    featured: true,
+    sizes: ['M', 'L', 'XL'],
+    inStock: true,
+    description: 'Retro racing nylon bomber with reflective piping.',
+  },
+  {
+    id: 'hero-drop-4',
+    name: 'Wide-Leg 90s Cyber Skater Cargo Pants',
+    price: 9500,
+    category: 'bottoms',
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1600&auto=format&fit=crop',
+    featured: true,
+    sizes: ['30', '32', '34'],
+    inStock: true,
+    description: 'Wide-leg skater denim with utility pockets and reinforced knees.',
+  },
+];
+
+export default function HeroImageSlider({ initialProducts }: { initialProducts?: ProductType[] }) {
+  const [products, setProducts] = useState<ProductType[]>(
+    initialProducts && initialProducts.length > 0 ? initialProducts : FALLBACK_HERO_PRODUCTS
+  );
   const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-  const [loading, setLoading] = useState(true);
 
   const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
+  // Fetch live products in the background without blocking render
   useEffect(() => {
-    async function loadProducts() {
+    let isMounted = true;
+    async function loadLiveProducts() {
       try {
-        setLoading(true);
         const res = await fetch('/api/products');
         const data = await res.json();
-        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+        if (isMounted && data.success && Array.isArray(data.products) && data.products.length > 0) {
           setProducts(data.products);
         }
       } catch (err) {
-        console.error('Failed to load hero slider products', err);
-      } finally {
-        setLoading(false);
+        console.error('Silently fallback to initial hero products', err);
       }
     }
-    loadProducts();
+    loadLiveProducts();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const total = products.length;
   const currentIndex = total > 0 ? ((page % total) + total) % total : 0;
-  const activeProduct = products[currentIndex] || null;
+  const activeProduct = products[currentIndex] || FALLBACK_HERO_PRODUCTS[0];
 
   const paginate = useCallback(
     (newDirection: number) => {
@@ -72,22 +122,24 @@ export default function HeroImageSlider() {
     return () => clearInterval(interval);
   }, [isAutoPlay, total, paginate]);
 
+  // Preload upcoming slide image for instant zero-lag transition
+  useEffect(() => {
+    if (products.length <= 1) return;
+    const nextIdx = (currentIndex + 1) % products.length;
+    const nextImg = products[nextIdx]?.image;
+    if (nextImg) {
+      const img = new Image();
+      img.src = nextImg;
+    }
+  }, [currentIndex, products]);
+
   return (
     <section
       className="relative w-full h-[90vh] sm:h-[95vh] lg:h-screen overflow-hidden bg-black select-none"
       onMouseEnter={() => setIsAutoPlay(false)}
       onMouseLeave={() => setIsAutoPlay(true)}
     >
-      {loading ? (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-black text-zinc-500 font-mono-tech text-xs tracking-widest uppercase">
-          <span className="w-3 h-3 rounded-full bg-[#dfff00] animate-ping mb-4" />
-          <span>LOADING FULLSCREEN ARCHIVE SLIDER...</span>
-        </div>
-      ) : !activeProduct ? (
-        <div className="w-full h-full flex items-center justify-center bg-black text-zinc-500 font-mono-tech text-xs">
-          ✦ NO PRODUCTS FOUND IN DATABASE. ADD PIECES IN ADMIN.
-        </div>
-      ) : (
+      {activeProduct && (
         <>
           {/* Full Screen Image Slider Stage */}
           <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -116,10 +168,14 @@ export default function HeroImageSlider() {
               }}
               className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
             >
-              {/* Full Bleed Image */}
+              {/* Full Bleed Image with Instant Eager Loading */}
               <img
                 src={activeProduct.image}
                 alt={activeProduct.name}
+                loading="eager"
+                decoding="async"
+                // @ts-ignore
+                fetchPriority="high"
                 className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-110"
               />
 

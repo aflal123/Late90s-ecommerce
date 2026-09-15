@@ -61,7 +61,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Dynamic Live Database Photo Hero Slider */}
-      <HeroImageSlider />
+      <HeroImageSlider initialProducts={allProducts.length > 0 ? allProducts : undefined} />
 
       {/* Marquee Banner */}
       <MarqueeTicker />
