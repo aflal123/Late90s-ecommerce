@@ -12,7 +12,7 @@ export interface OrderDetails {
 }
 
 export function generateWhatsAppOrderUrl(order: OrderDetails, whatsappNumber?: string): string {
-  const phone = whatsappNumber || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const phone = whatsappNumber || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
   // Clean phone number: remove +, -, spaces
   const cleanPhone = phone.replace(/[^0-9]/g, '');
 
@@ -56,7 +56,7 @@ export function generateBatchWhatsAppOrderUrl(
   orderRef?: string,
   whatsappNumber?: string
 ): string {
-  const phone = whatsappNumber || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const phone = whatsappNumber || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
   const cleanPhone = phone.replace(/[^0-9]/g, '');
 
   const dateStr = new Date().toLocaleDateString('en-US', {

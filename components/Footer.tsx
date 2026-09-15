@@ -7,7 +7,7 @@ import { MessageCircle, Send, Shield } from 'lucide-react';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();

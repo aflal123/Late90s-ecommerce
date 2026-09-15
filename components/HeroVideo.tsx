@@ -9,7 +9,7 @@ export default function HeroVideo() {
   const [isMuted, setIsMuted] = useState(true);
   const [timeLeft, setTimeLeft] = useState({ hours: 16, minutes: 28, seconds: 40 });
   const videoRef = useRef<HTMLVideoElement>(null);
-  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
   useEffect(() => {
     const timer = setInterval(() => {

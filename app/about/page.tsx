@@ -8,7 +8,7 @@ import MarqueeTicker from '@/components/MarqueeTicker';
 import { ShieldCheck, Sparkles, MessageCircle, ArrowRight, Layers, Truck, Check } from 'lucide-react';
 
 export default function AboutPage() {
-  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col bg-bw-grid">

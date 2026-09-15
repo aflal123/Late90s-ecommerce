@@ -110,13 +110,13 @@ export default function LookbookPage() {
                     </Link>
 
                     <a
-                      href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent(`Hi late90s! I am looking at ${product.name} (₹${product.price}) from the 1999 lookbook.`)}`}
+                      href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201'}?text=${encodeURIComponent(`Hi late90s! I am looking at ${product.name} (₹${product.price}) from the 1999 lookbook.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] font-mono-tech text-zinc-400 hover:text-white flex items-center gap-1"
+                      className="px-4 py-2 rounded-lg bg-[#25D366] text-black text-xs font-mono-tech font-bold flex items-center gap-1.5 shadow-[0_0_12px_rgba(37,211,102,0.4)] hover:bg-[#20ba5a]"
                     >
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      <span>Inquire</span>
+                      <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                      <span>Order on WhatsApp</span>
                     </a>
                   </div>
                 </div>
@@ -125,19 +125,16 @@ export default function LookbookPage() {
           </div>
         )}
 
-        {/* WhatsApp Sizing Advisory */}
-        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-zinc-800 text-center space-y-6">
-          <span className="text-xs font-mono-tech uppercase text-[#dfff00] tracking-widest block">
-            ✦ PERSONAL FIT ADVISORY
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-black uppercase text-white">
-            NEED CUSTOM SIZING RECOMMENDATIONS?
-          </h2>
-          <p className="text-sm font-mono-tech text-zinc-400 max-w-xl mx-auto">
-            Send your height & weight to our styling team directly on WhatsApp for tailored sizing recommendations before placing your order.
+        {/* Custom Order Callout */}
+        <div className="mt-16 p-8 rounded-3xl bg-zinc-950 border border-zinc-800 text-center space-y-4 max-w-2xl mx-auto">
+          <h3 className="font-display font-black text-xl uppercase tracking-tight text-white">
+            Need Custom Fit or Sizing Advice?
+          </h3>
+          <p className="text-xs font-mono-tech text-zinc-400">
+            Chat directly with our styling team on WhatsApp for oversized drop-shoulder sizing guidelines.
           </p>
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210'}?text=${encodeURIComponent('Hi late90s! Can I get sizing advice for my height and weight?')}`}
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201'}?text=${encodeURIComponent('Hi late90s! Can I get sizing advice for my height and weight?')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-black text-xs font-mono-tech font-bold uppercase shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all"
