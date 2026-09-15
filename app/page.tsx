@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import MarqueeTicker from '@/components/MarqueeTicker';
-import HeroImageShowcase from '@/components/HeroImageShowcase';
+import HeroImageSlider from '@/components/HeroImageSlider';
 import ProductCard, { ProductType } from '@/components/ProductCard';
 import LiveArchiveShowcase from '@/components/LiveArchiveShowcase';
 import Footer from '@/components/Footer';
@@ -60,8 +60,8 @@ export default function HomePage() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Dynamic Live Database Photo Hero */}
-      <HeroImageShowcase />
+      {/* Dynamic Live Database Photo Hero Slider */}
+      <HeroImageSlider />
 
       {/* Marquee Banner */}
       <MarqueeTicker />
