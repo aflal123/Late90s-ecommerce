@@ -97,7 +97,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
               {product.category}
             </span>
             <span className="text-base font-mono-tech font-bold text-[#dfff00]">
-              ₹{product.price.toLocaleString('en-IN')}
+              LKR {product.price.toLocaleString('en-LK')}
             </span>
           </div>
 

@@ -95,7 +95,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
               </h2>
 
               <div className="text-3xl font-display font-black text-[#dfff00] mt-3">
-                ₹{product.price.toLocaleString('en-IN')}
+                LKR {product.price.toLocaleString('en-LK')}
                 <span className="text-xs font-mono-tech text-zinc-400 font-normal ml-2">
                   (Includes all taxes)
                 </span>
@@ -165,7 +165,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
                 className="w-full py-4 rounded-xl btn-whatsapp text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <MessageCircle className="w-5 h-5 fill-current" />
-                <span>Place Order (₹{(product.price * quantity).toLocaleString('en-IN')})</span>
+                <span>Place Order (LKR {(product.price * quantity).toLocaleString('en-LK')})</span>
               </button>
 
               <button

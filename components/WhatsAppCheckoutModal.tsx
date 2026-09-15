@@ -154,7 +154,7 @@ export default function WhatsAppCheckoutModal() {
                       </div>
                     </div>
                     <span className="font-mono-tech font-bold text-white">
-                      ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                      LKR {(item.price * item.quantity).toLocaleString('en-LK')}
                     </span>
                   </div>
                 ))}
@@ -162,7 +162,7 @@ export default function WhatsAppCheckoutModal() {
               <div className="pt-2 border-t border-zinc-800 flex justify-between items-center text-xs">
                 <span className="font-mono-tech uppercase text-zinc-400">Total Payable:</span>
                 <span className="font-mono-tech font-black text-lg text-white">
-                  ₹{totalAmount.toLocaleString('en-IN')}
+                  LKR {totalAmount.toLocaleString('en-LK')}
                 </span>
               </div>
             </div>

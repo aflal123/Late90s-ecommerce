@@ -61,7 +61,7 @@ export default function LookbookSection() {
                   {item.category}
                 </span>
                 <span className="absolute top-3 right-3 text-xs font-mono-tech font-bold text-[#dfff00]">
-                  ₹{item.price}
+                  LKR {item.price}
                 </span>
               </div>
 

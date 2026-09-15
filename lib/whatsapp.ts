@@ -33,8 +33,8 @@ export function generateWhatsAppOrderUrl(order: OrderDetails, whatsappNumber?: s
     `👕 *Product:* ${order.productName}`,
     `📏 *Size:* ${order.size}`,
     `🔢 *Quantity:* ${order.quantity}`,
-    `💰 *Price:* ₹${order.price} each`,
-    `💵 *Total Amount:* *₹${order.totalPrice}*`,
+    `💰 *Price:* LKR ${order.price} each`,
+    `💵 *Total Amount:* *LKR ${order.totalPrice}*`,
     `----------------------------------------`,
     `👤 *Customer Info:*`,
     `• *Name:* ${order.customerName}`,
@@ -70,7 +70,7 @@ export function generateBatchWhatsAppOrderUrl(
   const itemsList = items
     .map(
       (item, idx) =>
-        `${idx + 1}. *${item.name}* (Size: ${item.size}) × ${item.quantity} = ₹${item.price * item.quantity}`
+        `${idx + 1}. *${item.name}* (Size: ${item.size}) × ${item.quantity} = LKR ${item.price * item.quantity}`
     )
     .join('\n');
 
@@ -83,7 +83,7 @@ export function generateBatchWhatsAppOrderUrl(
     `🛒 *Items Ordered:*`,
     itemsList,
     `----------------------------------------`,
-    `💵 *Grand Total:* *₹${totalAmount}*`,
+    `💵 *Grand Total:* *LKR ${totalAmount}*`,
     `----------------------------------------`,
     `👤 *Customer Info:*`,
     `• *Name:* ${customerInfo.name}`,

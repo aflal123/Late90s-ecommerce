@@ -8,7 +8,7 @@ async function check() {
   console.log(`=== NEON DATABASE CURRENT STATE ===`);
   console.log(`\nProducts (${products.length}):`);
   products.forEach((p) => {
-    console.log(`- [${p.id}] "${p.name}" (Cat: ${p.category}, ₹${p.price})`);
+    console.log(`- [${p.id}] "${p.name}" (Cat: ${p.category}, LKR ${p.price})`);
     console.log(`  Img: ${p.image}`);
   });
 

@@ -97,7 +97,7 @@ export default function CartPage() {
                         Size: <strong className="text-white">{item.size}</strong>
                       </p>
                       <p className="text-sm font-mono-tech font-bold text-white">
-                        ₹{item.price.toLocaleString('en-IN')} each
+                        LKR {item.price.toLocaleString('en-LK')} each
                       </p>
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export default function CartPage() {
 
                     <div className="text-right">
                       <span className="font-mono-tech font-bold text-base text-white block">
-                        ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                        LKR {(item.price * item.quantity).toLocaleString('en-LK')}
                       </span>
                       <button
                         onClick={() => removeFromCart(item.id)}
@@ -150,7 +150,7 @@ export default function CartPage() {
                 <div className="space-y-3 text-xs font-mono-tech">
                   <div className="flex justify-between text-zinc-400">
                     <span>Subtotal ({totalItems} items):</span>
-                    <span className="text-white">₹{totalPrice.toLocaleString('en-IN')}</span>
+                    <span className="text-white">LKR {totalPrice.toLocaleString('en-LK')}</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Shipping:</span>
@@ -164,7 +164,7 @@ export default function CartPage() {
                   <div className="pt-4 border-t border-zinc-800 flex justify-between items-center text-sm font-bold">
                     <span className="text-white uppercase font-display">Total Amount:</span>
                     <span className="text-2xl font-mono-tech font-bold text-[#dfff00]">
-                      ₹{totalPrice.toLocaleString('en-IN')}
+                      LKR {totalPrice.toLocaleString('en-LK')}
                     </span>
                   </div>
                 </div>

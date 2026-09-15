@@ -91,7 +91,7 @@ export default function LookbookPage() {
                       </h3>
                     </Link>
                     <span className="font-mono-tech font-bold text-[#dfff00] text-sm">
-                      ₹{product.price.toLocaleString('en-IN')}
+                      LKR {product.price.toLocaleString('en-LK')}
                     </span>
                   </div>
 
@@ -110,7 +110,7 @@ export default function LookbookPage() {
                     </Link>
 
                     <a
-                      href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201'}?text=${encodeURIComponent(`Hi late90s! I am looking at ${product.name} (₹${product.price}) from the 1999 lookbook.`)}`}
+                      href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201'}?text=${encodeURIComponent(`Hi late90s! I am looking at ${product.name} (LKR ${product.price}) from the 1999 lookbook.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-4 py-2 rounded-lg bg-[#25D366] text-black text-xs font-mono-tech font-bold flex items-center gap-1.5 shadow-[0_0_12px_rgba(37,211,102,0.4)] hover:bg-[#20ba5a]"

@@ -180,7 +180,7 @@ export default function ProductDetailPage() {
 
               <div className="flex items-baseline gap-4 mt-4">
                 <span className="text-4xl font-mono-tech font-bold text-[#dfff00]">
-                  ₹{product.price.toLocaleString('en-IN')}
+                  LKR {product.price.toLocaleString('en-LK')}
                 </span>
                 <span className="text-xs font-mono-tech text-zinc-400">
                   (Inclusive of all taxes & free shipping)
@@ -260,7 +260,7 @@ export default function ProductDetailPage() {
                 className="w-full py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-black text-xs font-mono-tech font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_25px_rgba(37,211,102,0.35)] disabled:opacity-40 transition-all"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Place Order (₹{(product.price * quantity).toLocaleString('en-IN')})</span>
+                <span>Place Order (LKR {(product.price * quantity).toLocaleString('en-LK')})</span>
               </button>
 
               <button

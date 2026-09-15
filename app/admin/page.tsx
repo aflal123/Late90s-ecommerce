@@ -545,7 +545,7 @@ export default function AdminPage() {
                   <DollarSign className="w-5 h-5 text-[#dfff00]" />
                 </div>
                 <div className="text-3xl font-display font-black text-[#dfff00]">
-                  ₹{totalRevenue.toLocaleString('en-IN')}
+                  LKR {totalRevenue.toLocaleString('en-LK')}
                 </div>
                 <p className="text-[11px] font-mono-tech text-zinc-500 mt-2">
                   From {orders.length} placed WhatsApp orders
@@ -630,7 +630,7 @@ export default function AdminPage() {
                           <td className="py-3 px-4">{ord.customerName}</td>
                           <td className="py-3 px-4">{ord.customerPhone}</td>
                           <td className="py-3 px-4">{ord.product?.name || 'Apparel Item'}</td>
-                          <td className="py-3 px-4 text-[#dfff00] font-bold">₹{ord.totalPrice}</td>
+                          <td className="py-3 px-4 text-[#dfff00] font-bold">LKR {ord.totalPrice}</td>
                           <td className="py-3 px-4">
                             <span className="px-2 py-0.5 rounded text-[10px] uppercase font-bold bg-zinc-900 text-zinc-300 border border-zinc-700">
                               {ord.status}
@@ -702,7 +702,7 @@ export default function AdminPage() {
                         {p.name}
                       </h4>
                       <p className="text-base font-display font-black text-[#dfff00] mt-1">
-                        ₹{p.price}
+                        LKR {p.price}
                       </p>
                     </div>
 
@@ -777,7 +777,7 @@ export default function AdminPage() {
                           × {ord.quantity}
                         </td>
                         <td className="py-4 px-4 font-bold text-[#dfff00]">
-                          ₹{ord.totalPrice}
+                          LKR {ord.totalPrice}
                         </td>
                         <td className="py-4 px-4">
                           <select
@@ -997,7 +997,7 @@ export default function AdminPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-mono-tech uppercase text-zinc-300 mb-1">
-                    Price (₹) *
+                    Price (LKR) *
                   </label>
                   <input
                     type="number"

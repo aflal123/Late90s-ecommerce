@@ -96,7 +96,7 @@ export default function CartDrawer() {
                         Size: {item.size}
                       </span>
                       <span className="text-xs font-mono-tech text-zinc-400">
-                        ₹{item.price.toLocaleString('en-IN')}
+                        LKR {item.price.toLocaleString('en-LK')}
                       </span>
                     </div>
 
@@ -131,7 +131,7 @@ export default function CartDrawer() {
 
                   <div className="text-right">
                     <span className="font-mono-tech font-bold text-sm text-white">
-                      ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                      LKR {(item.price * item.quantity).toLocaleString('en-LK')}
                     </span>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export default function CartDrawer() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs text-zinc-400 font-mono-tech">
                   <span>Subtotal:</span>
-                  <span className="text-white">₹{totalPrice.toLocaleString('en-IN')}</span>
+                  <span className="text-white">LKR {totalPrice.toLocaleString('en-LK')}</span>
                 </div>
                 <div className="flex justify-between text-xs text-zinc-400 font-mono-tech">
                   <span>Shipping:</span>
@@ -154,7 +154,7 @@ export default function CartDrawer() {
                 <div className="pt-2 border-t border-zinc-800 flex justify-between items-center">
                   <span className="font-mono-tech uppercase text-xs text-zinc-400">Total:</span>
                   <span className="font-mono-tech font-black text-xl text-white">
-                    ₹{totalPrice.toLocaleString('en-IN')}
+                    LKR {totalPrice.toLocaleString('en-LK')}
                   </span>
                 </div>
               </div>
