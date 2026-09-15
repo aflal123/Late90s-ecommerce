@@ -186,15 +186,7 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
               {/* Overlaid Streetwear Content Container */}
               <div className="absolute inset-0 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between py-12 sm:py-16 pointer-events-none">
                 
-                {/* Top Badge on Slide */}
-                <div className="flex items-center justify-between pt-4 sm:pt-6">
-                  <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md pointer-events-auto">
-                    <span className="w-2 h-2 rounded-full bg-[#dfff00] animate-pulse" />
-                    <span className="text-[10px] sm:text-xs font-mono-tech uppercase tracking-widest text-[#dfff00] font-bold">
-                      LIVE VAULT • {activeProduct.category}
-                    </span>
-                  </div>
-                </div>
+                
 
                 {/* Bottom Centerpiece: Headline, Price, & Actions */}
                 <div className="space-y-4 sm:space-y-6 max-w-2xl pointer-events-auto pb-6 sm:pb-8">
