@@ -393,7 +393,7 @@ export default function AdminPage() {
                 required
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="Enter admin password (late90sadmin)..."
+                placeholder="Enter admin password ..."
                 className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#dfff00]"
               />
               {authError && (
