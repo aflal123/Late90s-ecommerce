@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -52,15 +52,7 @@ export default function RootLayout({
                   if (saved === 'light' || saved === 'dark') {
                     document.documentElement.classList.add(saved);
                   } else {
-                    var isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    if (isMobile) {
-                      // Default color is white (light) for mobile phones unless system specifies dark
-                      var theme = prefersDark ? 'dark' : 'light';
-                      document.documentElement.classList.add(theme);
-                    } else {
-                      document.documentElement.classList.add('dark');
-                    }
+                    document.documentElement.classList.add('dark');
                   }
                 } catch (e) {}
               })();

@@ -24,19 +24,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (saved === 'light' || saved === 'dark') {
         return saved;
       }
-      // On mobile phones: default to white (light) or system theme
-      const isMobile =
-        typeof window !== 'undefined' &&
-        (window.innerWidth < 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent));
-      const systemPrefersDark =
-        typeof window !== 'undefined' &&
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (isMobile) {
-        // Mobile phones default to white (light mode) unless system explicitly requests dark
-        return systemPrefersDark ? 'dark' : 'light';
-      }
+      // Default to signature underground black (dark mode) everywhere
       return 'dark';
     };
 
