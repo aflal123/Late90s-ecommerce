@@ -138,12 +138,6 @@ export default function HeroImageSlider() {
                       LIVE VAULT • {activeProduct.category}
                     </span>
                   </div>
-
-                  <div className="px-3.5 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md text-white text-xs font-mono-tech font-bold pointer-events-auto">
-                    <span>{String(currentIndex + 1).padStart(2, '0')}</span>
-                    <span className="text-zinc-500 mx-1">/</span>
-                    <span>{String(total).padStart(2, '0')}</span>
-                  </div>
                 </div>
 
                 {/* Bottom Centerpiece: Headline, Price, & Actions */}
@@ -211,30 +205,7 @@ export default function HeroImageSlider() {
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Bottom Interactive Thumbnail Bar */}
-          <div className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 z-20 flex items-center gap-2 sm:gap-3">
-            {products.map((p, idx) => (
-              <button
-                key={p.id}
-                onClick={() => {
-                  const diff = idx - currentIndex;
-                  paginate(diff === 0 ? 1 : diff);
-                }}
-                className={`group relative rounded-lg overflow-hidden aspect-[4/3] w-12 sm:w-16 transition-all duration-300 border cursor-pointer ${
-                  idx === currentIndex
-                    ? 'border-[#dfff00] ring-2 ring-[#dfff00]/50 scale-110 shadow-lg'
-                    : 'border-white/20 opacity-60 hover:opacity-100 hover:border-white'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              >
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="w-full h-full object-cover object-center"
-                />
-              </button>
-            ))}
-          </div>
+
 
           {/* Bottom Progress Bar */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30 overflow-hidden">
