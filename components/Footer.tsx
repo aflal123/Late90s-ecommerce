@@ -151,11 +151,23 @@ export default function Footer() {
         {/* Credits */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono-tech text-zinc-600 gap-4">
           <p>© {new Date().getFullYear()} LATE90S APPAREL ARCHIVE. ALL RIGHTS RESERVED.</p>
-          <p className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span>
+              Developed by{" "}
+              <a
+                href="https://www.evliqlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-300 font-bold hover:text-[#dfff00] transition-colors underline underline-offset-4"
+              >
+                EvliqLabs
+              </a>
+            </span>
+            <span className="hidden sm:inline">•</span>
             <span>Powered by <strong className="text-emerald-400">Neon Postgres</strong></span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
             <span><strong className="text-[#25D366]">WhatsApp Instant Ordering</strong></span>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
