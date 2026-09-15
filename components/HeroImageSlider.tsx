@@ -26,56 +26,67 @@ const slideVariants = {
   }),
 };
 
-const FALLBACK_HERO_PRODUCTS: ProductType[] = [
+const REAL_HERO_PRODUCTS: ProductType[] = [
   {
-    id: 'hero-drop-1',
-    name: 'LATE90S Acid Cyber Vintage Tee',
-    price: 6500,
+    id: 'cmu37gqyr0000jt043csvuf2s',
+    name: 'OverSize T- Shirt',
+    description: 'color',
+    price: 1600,
+    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789509006/late90s_apparel/f0z8kyw2nmdkcdqkffgf.jpg',
     category: 'tees',
-    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1600&auto=format&fit=crop',
-    featured: true,
-    sizes: ['M', 'L', 'XL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     inStock: true,
-    description: 'Heavyweight 260+ GSM vintage washed drop-shoulder boxy tee.',
+    featured: false,
   },
   {
-    id: 'hero-drop-2',
-    name: 'Distressed 450 GSM Heavy French Terry Hoodie',
-    price: 14500,
-    category: 'hoodies',
-    image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1600&auto=format&fit=crop',
-    featured: true,
-    sizes: ['S', 'M', 'L', 'XL'],
+    id: 'cmu390or80000jq04omtsqqi8',
+    name: 'Devido Strip Shirt',
+    description: 'shirt',
+    price: 5500,
+    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511622/late90s_apparel/ok9xjyo0nz2wcolv6zin.jpg',
+    category: 'shirt',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     inStock: true,
-    description: 'Custom boxy heavyweight hoodie with distressed hems.',
+    featured: false,
   },
   {
-    id: 'hero-drop-3',
-    name: 'Subway Cyber Drift Track Jacket',
-    price: 18500,
-    category: 'outerwear',
-    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1600&auto=format&fit=crop',
-    featured: true,
-    sizes: ['M', 'L', 'XL'],
+    id: 'cmu391if10000kz046r1f0us7',
+    name: 'Devido Stripe Shirt',
+    description: 'shirt',
+    price: 5500,
+    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511661/late90s_apparel/pcjlzfqar0hdxzjsalf4.jpg',
+    category: 'shirt',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     inStock: true,
-    description: 'Retro racing nylon bomber with reflective piping.',
+    featured: false,
   },
   {
-    id: 'hero-drop-4',
-    name: 'Wide-Leg 90s Cyber Skater Cargo Pants',
-    price: 9500,
-    category: 'bottoms',
-    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1600&auto=format&fit=crop',
-    featured: true,
-    sizes: ['30', '32', '34'],
+    id: 'cmu394tnk0001kz04t3peq4dc',
+    name: 'Linen Trouser',
+    description: 'Linen',
+    price: 3400,
+    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511796/late90s_apparel/hevznjcnal2hexjxpxyk.jpg',
+    category: 'linen',
+    sizes: ['28', '30', '32', '34', '36'],
     inStock: true,
-    description: 'Wide-leg skater denim with utility pockets and reinforced knees.',
+    featured: false,
+  },
+  {
+    id: 'cmu35tg140000rli0o05z3hiy',
+    name: 'Oversized tshirt',
+    description: 'color',
+    price: 1600,
+    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789506244/late90s_apparel/nusx9ipc8uxsg6quqngf.jpg',
+    category: 'tees',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    inStock: true,
+    featured: false,
   },
 ];
 
 export default function HeroImageSlider({ initialProducts }: { initialProducts?: ProductType[] }) {
   const [products, setProducts] = useState<ProductType[]>(
-    initialProducts && initialProducts.length > 0 ? initialProducts : FALLBACK_HERO_PRODUCTS
+    initialProducts && initialProducts.length > 0 ? initialProducts : REAL_HERO_PRODUCTS
   );
   const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -104,7 +115,7 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
 
   const total = products.length;
   const currentIndex = total > 0 ? ((page % total) + total) % total : 0;
-  const activeProduct = products[currentIndex] || FALLBACK_HERO_PRODUCTS[0];
+  const activeProduct = products[currentIndex] || REAL_HERO_PRODUCTS[0];
 
   const paginate = useCallback(
     (newDirection: number) => {
