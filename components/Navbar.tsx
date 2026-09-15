@@ -3,11 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, MessageCircle, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
+import { ShoppingBag, MessageCircle, Menu, X, Shield, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function Navbar() {
   const { totalItems, setIsCartOpen } = useCart();
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
@@ -79,6 +81,16 @@ export default function Navbar() {
               <Shield className="w-4 h-4" />
             </Link>
 
+            {/* Theme Toggle (Dark / Light) */}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-800 transition-colors cursor-pointer"
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-[#dfff00]" /> : <Moon className="w-4 h-4 text-zinc-800" />}
+            </button>
+
             {/* Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
@@ -122,6 +134,13 @@ export default function Navbar() {
                 <ArrowUpRight className="w-4 h-4 text-zinc-600" />
               </Link>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="py-1 text-zinc-400 hover:text-white flex items-center justify-between w-full text-left cursor-pointer"
+            >
+              <span>Appearance: {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-[#dfff00]" /> : <Moon className="w-4 h-4 text-zinc-400" />}
+            </button>
             <Link
               href="/cart"
               onClick={() => setMobileMenuOpen(false)}

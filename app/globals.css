@@ -172,3 +172,123 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
+
+/* ==========================================================================
+   Light Mode Design System (Streetwear Minimalist High-Contrast Chalk)
+   ========================================================================== */
+html.light {
+  --background: #fafafa;
+  --foreground: #09090b;
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7;
+}
+
+html.light body,
+html.light main,
+html.light .bg-black {
+  background-color: #fafafa !important;
+  color: #09090b !important;
+}
+
+html.light .bg-zinc-950 {
+  background-color: #f4f4f5 !important;
+}
+
+html.light .bg-zinc-900 {
+  background-color: #e4e4e7 !important;
+  color: #09090b !important;
+}
+
+html.light .text-white {
+  color: #09090b !important;
+}
+
+html.light .text-zinc-100 {
+  color: #18181b !important;
+}
+
+html.light .text-zinc-300,
+html.light .text-zinc-400 {
+  color: #52525b !important;
+}
+
+html.light .text-zinc-500 {
+  color: #71717a !important;
+}
+
+html.light .border-zinc-800,
+html.light .border-zinc-700,
+html.light .border-white\/10,
+html.light .border-white\/20 {
+  border-color: #e4e4e7 !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .glass-card {
+  background: #ffffff !important;
+  border-color: #e4e4e7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .glass-card:hover {
+  border-color: #09090b !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light .bg-bw-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
+}
+
+html.light .btn-bw-primary {
+  background: #09090b !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light .btn-bw-primary:hover {
+  background: #27272a !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.light .btn-bw-outline {
+  background: transparent !important;
+  color: #09090b !important;
+  border-color: #09090b !important;
+}
+
+html.light .btn-bw-outline:hover {
+  background: #09090b !important;
+  color: #ffffff !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #09090b !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #a1a1aa !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}

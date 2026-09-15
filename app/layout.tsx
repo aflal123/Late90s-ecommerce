@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 import CartDrawer from '@/components/CartDrawer';
 import WhatsAppCheckoutModal from '@/components/WhatsAppCheckoutModal';
 
@@ -31,13 +32,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <body className="bg-black text-zinc-100 min-h-screen flex flex-col font-sans selection:bg-[#dfff00] selection:text-black">
-        <CartProvider>
-          {children}
-          <CartDrawer />
-          <WhatsAppCheckoutModal />
-        </CartProvider>
+        <ThemeProvider>
+          <CartProvider>
+            {children}
+            <CartDrawer />
+            <WhatsAppCheckoutModal />
+          </CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
