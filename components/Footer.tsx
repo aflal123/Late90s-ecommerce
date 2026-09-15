@@ -98,6 +98,9 @@ export default function Footer() {
                 <span className="text-zinc-300">Sizes:</span> S, M, L, XL, XXL
               </li>
               <li>
+                <span className="text-zinc-300">WhatsApp:</span> <a href={`https://wa.me/${whatsappNum}`} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:underline font-bold">+94 77 549 4201</a>
+              </li>
+              <li>
                 <span className="text-zinc-300">Size Swap:</span> Free 7-Day Exchange
               </li>
               <li>
