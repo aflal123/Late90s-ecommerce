@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function MarqueeTicker() {
   const items = [
-    'DROP 001 ARCHIVE IS LIVE',
+    'LATE90S VAULT IS LIVE',
     'INSTANT WHATSAPP CLICK-TO-ORDER',
     '260+ GSM HEAVYWEIGHT COMBED COTTON',
     '480 GSM FRENCH TERRY DISTRESSED HOODIES',

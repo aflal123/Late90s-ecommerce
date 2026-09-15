@@ -65,7 +65,7 @@ export default function ShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-[11px] font-mono-tech tracking-widest uppercase text-zinc-400 block mb-2">
-              ✦ ORIGINAL ARCHIVE • DROP 001
+              ✦ ORIGINAL ARCHIVE • LATE90S VAULT
             </span>
             <h1 className="text-4xl sm:text-6xl font-display font-black uppercase tracking-tight text-white">
               THE APPAREL VAULT

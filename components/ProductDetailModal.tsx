@@ -69,7 +69,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
             />
             {product.featured && (
               <span className="absolute top-4 left-4 px-3 py-1 text-xs font-mono-tech font-bold uppercase bg-[#dfff00] text-black rounded tracking-wider shadow">
-                DROP 001 EXCLUSIVE
+                FEATURED ARCHIVE
               </span>
             )}
           </div>

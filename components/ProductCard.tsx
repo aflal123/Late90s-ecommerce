@@ -69,7 +69,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {product.featured && (
             <span className="px-2.5 py-0.5 text-[9px] font-mono-tech font-bold uppercase bg-[#dfff00] text-black rounded tracking-widest shadow">
-              DROP 001
+              FEATURED
             </span>
           )}
           <span

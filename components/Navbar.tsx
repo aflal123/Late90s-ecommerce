@@ -32,9 +32,6 @@ export default function Navbar() {
               <span className="text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase text-white group-hover:text-[#dfff00] transition-colors">
                 LATE<span className="text-[#dfff00]">90S</span>
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono-tech tracking-widest uppercase bg-zinc-900 border border-zinc-700 text-[#dfff00] rounded">
-                DROP 001
-              </span>
             </Link>
           </div>
 

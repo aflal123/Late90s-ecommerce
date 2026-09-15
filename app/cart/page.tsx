@@ -154,7 +154,7 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Shipping:</span>
-                    <span className="text-white font-bold">FREE (Drop 001)</span>
+                    <span className="text-white font-bold">FREE DELIVERY</span>
                   </div>
                   <div className="flex justify-between text-zinc-400">
                     <span>Order Mode:</span>

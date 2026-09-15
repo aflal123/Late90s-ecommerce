@@ -79,7 +79,7 @@ export default function HeroVideo() {
         >
           <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
           <span className="text-[11px] font-mono-tech tracking-widest uppercase text-zinc-300">
-            LIMITED ARCHIVE DROP 001:
+            LIMITED ARCHIVE COLLECTION:
           </span>
           <div className="font-mono-tech font-bold text-white text-xs flex gap-1">
             <span>{String(timeLeft.hours).padStart(2, '0')}H</span> :

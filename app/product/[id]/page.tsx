@@ -150,7 +150,7 @@ export default function ProductDetailPage() {
               <div className="absolute top-4 left-4 flex gap-2">
                 {product.featured && (
                   <span className="px-3 py-1 rounded text-[10px] font-mono-tech font-bold uppercase bg-[#dfff00] text-black shadow">
-                    DROP 001 EXCLUSIVE
+                    FEATURED
                   </span>
                 )}
                 <span
