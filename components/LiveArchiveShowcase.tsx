@@ -20,7 +20,7 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
     if (!isAutoPlay || products.length <= 1) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 3000);
+    }, 3550);
     return () => clearInterval(interval);
   }, [isAutoPlay, products.length]);
 
