@@ -281,9 +281,12 @@ html.light .glass-card:hover {
 }
 
 html.light .bg-bw-grid {
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+html.light .bg-radial-bw {
+  background: none !important;
 }
 
 html.light .btn-bw-primary {
