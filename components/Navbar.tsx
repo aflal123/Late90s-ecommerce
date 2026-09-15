@@ -28,8 +28,7 @@ export default function Navbar() {
           
           {/* Brand Logo */}
           <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <span className="w-2 h-2 rounded-full bg-[#dfff00] group-hover:scale-125 transition-transform" />
+            <Link href="/" className="flex items-center group">
               <span className="text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase text-white group-hover:text-[#dfff00] transition-colors">
                 LATE<span className="text-[#dfff00]">90S</span>
               </span>
