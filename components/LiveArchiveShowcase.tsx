@@ -68,9 +68,6 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
           <span className="text-[10px] font-mono-tech uppercase tracking-widest text-emerald-400 font-bold">
             LIVE NEON DB ARCHIVE
           </span>
-          <span className="text-[10px] font-mono-tech text-zinc-500">
-            [{currentIndex + 1}/{products.length}]
-          </span>
         </div>
 
         {/* Carousel Prev/Next Controls */}
