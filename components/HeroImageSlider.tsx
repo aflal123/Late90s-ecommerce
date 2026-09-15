@@ -26,74 +26,14 @@ const slideVariants = {
   }),
 };
 
-const REAL_HERO_PRODUCTS: ProductType[] = [
-  {
-    id: 'cmu37gqyr0000jt043csvuf2s',
-    name: 'OverSize T- Shirt',
-    description: 'color',
-    price: 1600,
-    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789509006/late90s_apparel/f0z8kyw2nmdkcdqkffgf.jpg',
-    category: 'tees',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'cmu390or80000jq04omtsqqi8',
-    name: 'Devido Strip Shirt',
-    description: 'shirt',
-    price: 5500,
-    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511622/late90s_apparel/ok9xjyo0nz2wcolv6zin.jpg',
-    category: 'shirt',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'cmu391if10000kz046r1f0us7',
-    name: 'Devido Stripe Shirt',
-    description: 'shirt',
-    price: 5500,
-    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511661/late90s_apparel/pcjlzfqar0hdxzjsalf4.jpg',
-    category: 'shirt',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'cmu394tnk0001kz04t3peq4dc',
-    name: 'Linen Trouser',
-    description: 'Linen',
-    price: 3400,
-    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789511796/late90s_apparel/hevznjcnal2hexjxpxyk.jpg',
-    category: 'linen',
-    sizes: ['28', '30', '32', '34', '36'],
-    inStock: true,
-    featured: false,
-  },
-  {
-    id: 'cmu35tg140000rli0o05z3hiy',
-    name: 'Oversized tshirt',
-    description: 'color',
-    price: 1600,
-    image: 'https://res.cloudinary.com/drewcfm37/image/upload/v1789506244/late90s_apparel/nusx9ipc8uxsg6quqngf.jpg',
-    category: 'tees',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-    featured: false,
-  },
-];
-
-export default function HeroImageSlider({ initialProducts }: { initialProducts?: ProductType[] }) {
-  const [products, setProducts] = useState<ProductType[]>(
-    initialProducts && initialProducts.length > 0 ? initialProducts : REAL_HERO_PRODUCTS
-  );
+export default function HeroImageSlider({ initialProducts = [] }: { initialProducts?: ProductType[] }) {
+  const [products, setProducts] = useState<ProductType[]>(initialProducts);
   const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
   const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
-  // Fetch live products in the background without blocking render
+  // Fetch live products straight from database via API
   useEffect(() => {
     let isMounted = true;
     async function loadLiveProducts() {
@@ -104,7 +44,7 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
           setProducts(data.products);
         }
       } catch (err) {
-        console.error('Silently fallback to initial hero products', err);
+        console.error('Failed to sync live products from database', err);
       }
     }
     loadLiveProducts();
@@ -113,9 +53,16 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
     };
   }, []);
 
+  // Sync if initialProducts from server changes
+  useEffect(() => {
+    if (initialProducts && initialProducts.length > 0) {
+      setProducts(initialProducts);
+    }
+  }, [initialProducts]);
+
   const total = products.length;
   const currentIndex = total > 0 ? ((page % total) + total) % total : 0;
-  const activeProduct = products[currentIndex] || REAL_HERO_PRODUCTS[0];
+  const activeProduct = total > 0 ? products[currentIndex] : null;
 
   const paginate = useCallback(
     (newDirection: number) => {
@@ -201,10 +148,7 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
 
                 {/* Bottom Centerpiece: Headline, Price, & Actions */}
                 <div className="space-y-4 sm:space-y-6 max-w-2xl pointer-events-auto pb-6 sm:pb-8">
-                  <span className="text-xs sm:text-sm font-mono-tech uppercase text-zinc-300 tracking-[0.3em] block">
-                    ✦ LATE90S ORIGINAL ARCHIVE
-                  </span>
-
+                  
                   <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black uppercase text-white tracking-tighter leading-none drop-shadow-2xl">
                     {activeProduct.name}
                   </h1>
@@ -213,9 +157,7 @@ export default function HeroImageSlider({ initialProducts }: { initialProducts?:
                     <span className="text-3xl sm:text-4xl font-mono-tech font-black text-[#dfff00] drop-shadow-lg">
                       LKR {activeProduct.price.toLocaleString('en-LK')}
                     </span>
-                    <span className="text-xs font-mono-tech uppercase px-2.5 py-0.5 rounded bg-black/80 text-emerald-400 border border-emerald-500/40">
-                      ● IN STOCK
-                    </span>
+                    
                   </div>
 
                   {/* Buttons */}
