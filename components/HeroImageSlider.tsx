@@ -188,20 +188,20 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
             </motion.div>
           </AnimatePresence>
 
-          {/* Nav Arrow: Left Edge */}
+          {/* Nav Arrow: Left Edge (Hidden on mobile to avoid overlapping WhatsApp button) */}
           <button
             onClick={() => paginate(-1)}
             aria-label="Previous Slide"
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#dfff00] text-white hover:text-black border border-white/20 hover:border-[#dfff00] transition-all duration-300 backdrop-blur-md cursor-pointer shadow-2xl"
+            className="hidden sm:flex absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#dfff00] text-white hover:text-black border border-white/20 hover:border-[#dfff00] transition-all duration-300 backdrop-blur-md cursor-pointer shadow-2xl items-center justify-center"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
 
-          {/* Nav Arrow: Right Edge */}
+          {/* Nav Arrow: Right Edge (Hidden on mobile to avoid overlapping WhatsApp button) */}
           <button
             onClick={() => paginate(1)}
             aria-label="Next Slide"
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#dfff00] text-white hover:text-black border border-white/20 hover:border-[#dfff00] transition-all duration-300 backdrop-blur-md cursor-pointer shadow-2xl"
+            className="hidden sm:flex absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#dfff00] text-white hover:text-black border border-white/20 hover:border-[#dfff00] transition-all duration-300 backdrop-blur-md cursor-pointer shadow-2xl items-center justify-center"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
