@@ -15,12 +15,12 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
-  // Auto-advance cards every 4 seconds
+  // Auto-advance cards every 3 seconds (faster, snappier)
   useEffect(() => {
     if (!isAutoPlay || products.length <= 1) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isAutoPlay, products.length]);
 
@@ -92,7 +92,7 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.28 }}
             className="group relative p-3 sm:p-4 bg-zinc-950 border border-zinc-800 hover:border-[#dfff00]/50 rounded-2xl sm:-rotate-1 hover:rotate-0 transition-all duration-300 shadow-xl"
           >
             <Link href={`/product/${activeProduct.id}`} className="block">
@@ -104,38 +104,29 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
                 />
                 
                 {/* Live Tag Overlay */}
-                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-                  <span className="px-2 py-0.5 rounded text-[9px] font-mono-tech font-bold uppercase bg-black/85 text-emerald-400 border border-emerald-500/40">
-                    LIVE INVENTORY
+                <div className="absolute top-2.5 left-2.5 px-2 py-1 rounded-md bg-black/80 border border-white/20 backdrop-blur-md flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#dfff00]" />
+                  <span className="text-[9px] font-mono-tech uppercase tracking-wider text-zinc-300 font-bold">
+                    FEATURED 01
                   </span>
-                  {activeProduct.featured && (
-                    <span className="px-2 py-0.5 rounded text-[9px] font-mono-tech font-bold uppercase bg-[#dfff00] text-black">
-                      FEATURED
-                    </span>
-                  )}
                 </div>
 
-                <div className="absolute bottom-3 right-3 p-2 rounded-lg bg-black/80 backdrop-blur-md text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ExternalLink className="w-3.5 h-3.5 text-[#dfff00]" />
+                <div className="absolute bottom-2.5 right-2.5 p-2 rounded-lg bg-black/80 text-white group-hover:bg-[#dfff00] group-hover:text-black transition-colors">
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </div>
               </div>
 
-              {/* Garment Details Footer */}
-              <div className="pt-3 flex items-center justify-between gap-2">
-                <div className="min-w-0">
-                  <span className="text-[10px] font-mono-tech uppercase text-[#dfff00] tracking-wider block truncate">
-                    CATEGORY / {activeProduct.category}
-                  </span>
+              {/* Card Meta */}
+              <div className="mt-3 space-y-1">
+                <span className="text-[10px] font-mono-tech uppercase text-zinc-500 tracking-wider">
+                  {activeProduct.category}
+                </span>
+                <div className="flex items-center justify-between">
                   <h4 className="font-display font-black text-sm uppercase text-white group-hover:text-[#dfff00] transition-colors truncate">
                     {activeProduct.name}
                   </h4>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <span className="text-xs font-mono-tech font-bold text-white block">
+                  <span className="font-mono-tech text-xs font-bold text-[#dfff00]">
                     LKR {activeProduct.price.toLocaleString('en-LK')}
-                  </span>
-                  <span className="text-[9px] font-mono-tech text-emerald-400">
-                    AVAILABLE
                   </span>
                 </div>
               </div>
@@ -151,7 +142,7 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
-              transition={{ duration: 0.4, delay: 0.05 }}
+              transition={{ duration: 0.28, delay: 0.03 }}
               className="hidden sm:block group relative p-3 sm:p-4 bg-zinc-950 border border-zinc-800 hover:border-[#dfff00]/50 rounded-2xl rotate-1 hover:rotate-0 transition-all duration-300 shadow-xl"
             >
               <Link href={`/product/${nextProduct.id}`} className="block">

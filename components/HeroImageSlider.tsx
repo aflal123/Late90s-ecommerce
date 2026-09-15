@@ -71,12 +71,12 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
     []
   );
 
-  // Auto-play timer (slides every 4.5 seconds)
+  // Auto-play timer (slides every 3.2 seconds - snappier)
   useEffect(() => {
     if (!isAutoPlay || total <= 1) return;
     const interval = setInterval(() => {
       paginate(1);
-    }, 4500);
+    }, 3200);
     return () => clearInterval(interval);
   }, [isAutoPlay, total, paginate]);
 
@@ -109,9 +109,9 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
               animate="center"
               exit="exit"
               transition={{
-                x: { type: 'spring', stiffness: 220, damping: 26 },
-                opacity: { duration: 0.5 },
-                scale: { duration: 0.6 },
+                x: { type: 'spring', stiffness: 260, damping: 28 },
+                opacity: { duration: 0.35 },
+                scale: { duration: 0.4 },
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -214,7 +214,7 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
               key={`progress-${page}`}
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
-              transition={{ duration: 4.5, ease: 'linear' }}
+              transition={{ duration: 3.2, ease: 'linear' }}
               className="h-full bg-[#dfff00]"
             />
           </div>
