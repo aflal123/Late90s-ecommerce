@@ -15,29 +15,28 @@ export default function Navbar() {
   const whatsappNum = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94775494201';
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Apparel Vault', href: '/shop' },
-    { name: '1999 Lookbook', href: '/lookbook' },
-    { name: 'Testimonials', href: '/reviews' },
-    { name: 'The Archive', href: '/about' },
+    { name: 'Shop', href: '/shop' },
+    { name: 'Lookbook', href: '/lookbook' },
+    { name: 'About', href: '/about' },
+    { name: 'Reviews', href: '/reviews' },
   ];
 
   return (
     <header className="sticky top-0 z-50 glass-panel border-b border-white/10 bg-black/85">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           
-          {/* Brand Logo without (r) */}
+          {/* Brand Logo */}
           <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center space-x-2.5 group">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#dfff00] group-hover:scale-125 transition-transform" />
+            <Link href="/" className="flex items-center space-x-2 group">
+              <span className="w-2 h-2 rounded-full bg-[#dfff00] group-hover:scale-125 transition-transform" />
               <span className="text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase text-white group-hover:text-[#dfff00] transition-colors">
                 LATE<span className="text-[#dfff00]">90S</span>
               </span>
             </Link>
           </div>
 
-          {/* Multi-Page Navigation */}
+          {/* Minimalist Navigation */}
           <nav className="hidden md:flex items-center space-x-8 text-xs font-mono-tech tracking-widest uppercase">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -45,9 +44,9 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors flex items-center gap-1 ${
+                  className={`transition-colors py-1 ${
                     isActive
-                      ? 'text-[#dfff00] font-bold underline underline-offset-8 decoration-[#dfff00]'
+                      ? 'text-[#dfff00] font-bold border-b-2 border-[#dfff00]'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -57,30 +56,9 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          {/* Action Buttons: Only Theme Toggle, Cart, and Mobile Menu */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
             
-            {/* WhatsApp Direct Support CTA with vivid color */}
-            <a
-              href={`https://wa.me/${whatsappNum}?text=${encodeURIComponent('Hi late90s team! I want to inquire about your apparel collection and place an order.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#25D366]/20 border border-[#25D366]/50 text-[#25D366] text-xs font-mono-tech uppercase font-bold tracking-wider hover:bg-[#25D366] hover:text-black hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all"
-              title="Place order on WhatsApp"
-            >
-              <MessageCircle className="w-3.5 h-3.5 fill-current" />
-              <span>Place Order</span>
-            </a>
-
-            {/* Admin Link */}
-            <Link
-              href="/admin"
-              className="p-2.5 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors"
-              title="Admin Portal"
-            >
-              <Shield className="w-4 h-4" />
-            </Link>
-
             {/* Theme Toggle (Dark / Light) */}
             <button
               onClick={toggleTheme}
@@ -94,7 +72,7 @@ export default function Navbar() {
             {/* Cart Button */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 rounded-full bg-white text-black hover:bg-[#dfff00] transition-all flex items-center justify-center cursor-pointer shadow-lg"
+              className="relative p-2.5 rounded-full bg-white text-black hover:bg-[#dfff00] transition-all flex items-center justify-center cursor-pointer shadow-md"
               aria-label="View Cart"
             >
               <ShoppingBag className="w-4 h-4" />
@@ -108,10 +86,10 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-900"
+              className="md:hidden p-2.5 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-900 border border-zinc-800"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -148,13 +126,6 @@ export default function Navbar() {
             >
               <span>Shopping Bag ({totalItems})</span>
               <ShoppingBag className="w-4 h-4 text-[#dfff00]" />
-            </Link>
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-500 hover:text-white flex items-center gap-2 pt-2 border-t border-zinc-800 text-xs"
-            >
-              <Shield className="w-3.5 h-3.5" /> Admin Portal
             </Link>
           </nav>
           <div className="pt-2">
