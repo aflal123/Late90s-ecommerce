@@ -61,15 +61,8 @@ export default function LiveArchiveShowcase({ products, loading }: LiveArchiveSh
       onMouseEnter={() => setIsAutoPlay(false)}
       onMouseLeave={() => setIsAutoPlay(true)}
     >
-      {/* Live Badge & Carousel Controls */}
-      <div className="flex items-center justify-between px-1">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          <span className="text-[10px] font-mono-tech uppercase tracking-widest text-emerald-400 font-bold">
-            LIVE NEON DB ARCHIVE
-          </span>
-        </div>
-
+      {/* Carousel Controls */}
+      <div className="flex items-center justify-end px-1">
         {/* Carousel Prev/Next Controls */}
         <div className="flex items-center gap-1.5">
           <button
