@@ -18,14 +18,52 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    // Check localStorage or system preference
     const saved = localStorage.getItem('late90s_theme') as Theme | null;
-    if (saved === 'light' || saved === 'dark') {
-      setThemeState(saved);
-      document.documentElement.classList.remove('dark', 'light');
-      document.documentElement.classList.add(saved);
-    } else {
-      document.documentElement.classList.add('dark');
+
+    const getInitialTheme = (): Theme => {
+      if (saved === 'light' || saved === 'dark') {
+        return saved;
+      }
+      // On mobile phones: default to white (light) or system theme
+      const isMobile =
+        typeof window !== 'undefined' &&
+        (window.innerWidth < 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent));
+      const systemPrefersDark =
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (isMobile) {
+        // Mobile phones default to white (light mode) unless system explicitly requests dark
+        return systemPrefersDark ? 'dark' : 'light';
+      }
+      return 'dark';
+    };
+
+    const initial = getInitialTheme();
+    setThemeState(initial);
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(initial);
+
+    // Listen to mobile system theme changes dynamically
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e: MediaQueryListEvent) => {
+        const userSaved = localStorage.getItem('late90s_theme');
+        if (!userSaved) {
+          const isMobileDevice =
+            window.innerWidth < 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+          if (isMobileDevice) {
+            const sysTheme: Theme = e.matches ? 'dark' : 'light';
+            setThemeState(sysTheme);
+            document.documentElement.classList.remove('dark', 'light');
+            document.documentElement.classList.add(sysTheme);
+          }
+        }
+      };
+
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
     }
   }, []);
 

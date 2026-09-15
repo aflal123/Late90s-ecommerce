@@ -1,9 +1,18 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import CartDrawer from '@/components/CartDrawer';
 import WhatsAppCheckoutModal from '@/components/WhatsAppCheckoutModal';
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: 'late90s | Underground Streetwear Archive & WhatsApp Ordering',
@@ -32,7 +41,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('late90s_theme');
+                  if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.classList.add(saved);
+                  } else {
+                    var isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    if (isMobile) {
+                      // Default color is white (light) for mobile phones unless system specifies dark
+                      var theme = prefersDark ? 'dark' : 'light';
+                      document.documentElement.classList.add(theme);
+                    } else {
+                      document.documentElement.classList.add('dark');
+                    }
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="bg-black text-zinc-100 min-h-screen flex flex-col font-sans selection:bg-[#dfff00] selection:text-black">
         <ThemeProvider>
           <CartProvider>
