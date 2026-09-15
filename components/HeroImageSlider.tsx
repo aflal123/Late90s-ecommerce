@@ -93,7 +93,7 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
 
   return (
     <section
-      className="relative w-full h-[90vh] sm:h-[95vh] lg:h-screen overflow-hidden bg-black select-none"
+      className="relative w-full h-[90vh] sm:h-[95vh] lg:h-screen overflow-hidden bg-black select-none hero-slider-section"
       onMouseEnter={() => setIsAutoPlay(false)}
       onMouseLeave={() => setIsAutoPlay(true)}
     >
@@ -144,17 +144,15 @@ export default function HeroImageSlider({ initialProducts = [] }: { initialProdu
               {/* Overlaid Streetwear Content Container */}
               <div className="absolute inset-0 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between py-12 sm:py-16 pointer-events-none">
                 
-                
-
                 {/* Bottom Centerpiece: Headline, Price, & Actions */}
                 <div className="space-y-4 sm:space-y-6 max-w-2xl pointer-events-auto pb-6 sm:pb-8">
                   
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black uppercase text-white tracking-tighter leading-none drop-shadow-2xl">
+                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black uppercase text-white !text-white tracking-tighter leading-none drop-shadow-2xl">
                     {activeProduct.name}
                   </h1>
 
                   <div className="flex items-baseline gap-4">
-                    <span className="text-3xl sm:text-4xl font-mono-tech font-black text-[#dfff00] drop-shadow-lg">
+                    <span className="text-3xl sm:text-4xl font-mono-tech font-black text-[#dfff00] !text-[#dfff00] drop-shadow-lg">
                       LKR {activeProduct.price.toLocaleString('en-LK')}
                     </span>
                     

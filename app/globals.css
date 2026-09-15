@@ -218,6 +218,26 @@ html.light .text-zinc-400 {
   color: #18181b !important;
 }
 
+/* Hero slider overlay text MUST ALWAYS remain bright white on top of full-bleed dark photography */
+html.light .hero-slider-section,
+html.light .hero-slider-section h1,
+html.light .hero-slider-section h2,
+html.light .hero-slider-section h3,
+html.light .hero-slider-section .font-display,
+html.light .hero-slider-section .text-white {
+  color: #ffffff !important;
+}
+
+html.light .hero-slider-section .text-\[\#dfff00\],
+html.light .hero-slider-section [class*="text-[#dfff00]"] {
+  color: #dfff00 !important;
+}
+
+html.light .hero-slider-section p,
+html.light .hero-slider-section span.text-zinc-300 {
+  color: #d4d4d8 !important;
+}
+
 html.light .text-zinc-500 {
   color: #52525b !important;
 }
