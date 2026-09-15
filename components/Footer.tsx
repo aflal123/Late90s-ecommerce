@@ -153,7 +153,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} LATE90S APPAREL ARCHIVE. ALL RIGHTS RESERVED.</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span>
-              Developed by{" "}
+              Designed & Developed by{" "}
               <a
                 href="https://www.evliqlabs.com"
                 target="_blank"
@@ -163,10 +163,6 @@ export default function Footer() {
                 EvliqLabs
               </a>
             </span>
-            <span className="hidden sm:inline">•</span>
-            <span>Powered by <strong className="text-emerald-400">Neon Postgres</strong></span>
-            <span className="hidden sm:inline">•</span>
-            <span><strong className="text-[#25D366]">WhatsApp Instant Ordering</strong></span>
           </div>
         </div>
       </div>
