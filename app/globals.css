@@ -264,16 +264,32 @@ html.light .border-white\/20 {
 }
 
 html.light header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-color: #e4e4e7 !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e4e4e7 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light header * {
+  border-color: #e4e4e7;
+}
+
+html.light header a,
+html.light header span,
+html.light header button {
+  color: #000000 !important;
 }
 
 html.light header nav a {
-  color: #52525b !important;
+  color: #4b5563 !important;
 }
 
 html.light header nav a:hover {
   color: #000000 !important;
+}
+
+html.light header nav a.border-black {
+  color: #000000 !important;
+  border-bottom-color: #000000 !important;
 }
 
 html.light .glass-panel {

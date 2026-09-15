@@ -24,19 +24,25 @@ export default function Navbar() {
   const isLight = theme === 'light';
 
   return (
-    <header className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-colors duration-200 ${
-      isLight ? 'bg-white/95 border-zinc-200 shadow-sm' : 'bg-black/90 border-zinc-800/80'
-    }`}>
+    <header
+      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-colors duration-200 ${
+        isLight
+          ? 'bg-white/98 border-zinc-200 shadow-sm text-black'
+          : 'bg-black/90 border-zinc-800/80 text-white'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 items-center h-16 sm:h-20">
           
           {/* Brand Logo - Left */}
           <div className="flex items-center justify-start">
             <Link href="/" className="inline-flex items-center group">
-              <span className={`text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase transition-colors leading-none ${
-                isLight ? 'text-black group-hover:text-zinc-600' : 'text-white group-hover:text-[#dfff00]'
-              }`}>
-                LATE<span className={isLight ? 'text-zinc-900 underline decoration-black underline-offset-4' : 'text-[#dfff00]'}>90S</span>
+              <span
+                className={`text-2xl sm:text-3xl font-display font-black tracking-tighter uppercase transition-colors leading-none ${
+                  isLight ? 'text-black' : 'text-white group-hover:text-[#dfff00]'
+                }`}
+              >
+                LATE<span className={isLight ? 'text-black font-black' : 'text-[#dfff00]'}>90S</span>
               </span>
             </Link>
           </div>
@@ -49,7 +55,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors py-1.5 border-b-2 ${
+                  className={`transition-colors py-1.5 border-b-2 font-mono-tech ${
                     isActive
                       ? isLight
                         ? 'text-black font-bold border-black'
@@ -73,7 +79,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               className={`p-2.5 rounded-full border transition-colors cursor-pointer ${
                 isLight
-                  ? 'text-zinc-800 hover:text-black hover:bg-zinc-100 border-zinc-300'
+                  ? 'text-zinc-900 hover:text-black hover:bg-zinc-100 border-zinc-300'
                   : 'text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-800'
               }`}
               title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
@@ -94,11 +100,13 @@ export default function Navbar() {
             >
               <ShoppingBag className="w-4 h-4" />
               {totalItems > 0 && (
-                <span className={`absolute -top-1 -right-1 font-mono-tech font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center animate-pulse ${
-                  isLight
-                    ? 'bg-black text-white border border-white'
-                    : 'bg-[#25D366] text-black border border-black'
-                }`}>
+                <span
+                  className={`absolute -top-1 -right-1 font-mono-tech font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center animate-pulse ${
+                    isLight
+                      ? 'bg-zinc-900 text-white border border-white'
+                      : 'bg-[#25D366] text-black border border-black'
+                  }`}
+                >
                   {totalItems}
                 </span>
               )}
@@ -109,7 +117,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`md:hidden p-2.5 rounded-xl border transition-colors ${
                 isLight
-                  ? 'text-zinc-800 hover:bg-zinc-100 border-zinc-300'
+                  ? 'text-zinc-900 hover:bg-zinc-100 border-zinc-300'
                   : 'text-zinc-300 hover:text-white hover:bg-zinc-900 border-zinc-800'
               }`}
               aria-label="Toggle menu"
@@ -122,9 +130,11 @@ export default function Navbar() {
 
       {/* Mobile Multi-Page Menu */}
       {mobileMenuOpen && (
-        <div className={`md:hidden border-t backdrop-blur-xl px-6 py-6 space-y-4 ${
-          isLight ? 'bg-white/98 border-zinc-200' : 'bg-black/95 border-zinc-800'
-        }`}>
+        <div
+          className={`md:hidden border-t backdrop-blur-xl px-6 py-6 space-y-4 ${
+            isLight ? 'bg-white border-zinc-200 text-black' : 'bg-black/95 border-zinc-800 text-white'
+          }`}
+        >
           <nav className="flex flex-col space-y-4 font-mono-tech uppercase text-sm tracking-wider">
             {navLinks.map((link) => (
               <Link
@@ -133,8 +143,12 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`py-1 flex items-center justify-between ${
                   pathname === link.href
-                    ? isLight ? 'text-black font-bold' : 'text-[#dfff00] font-bold'
-                    : isLight ? 'text-zinc-600 hover:text-black' : 'text-zinc-400 hover:text-white'
+                    ? isLight
+                      ? 'text-black font-bold'
+                      : 'text-[#dfff00] font-bold'
+                    : isLight
+                      ? 'text-zinc-700 hover:text-black font-medium'
+                      : 'text-zinc-400 hover:text-white'
                 }`}
               >
                 <span>{link.name}</span>
@@ -144,7 +158,7 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               className={`py-1 flex items-center justify-between w-full text-left cursor-pointer ${
-                isLight ? 'text-zinc-700 hover:text-black' : 'text-zinc-400 hover:text-white'
+                isLight ? 'text-zinc-800 hover:text-black' : 'text-zinc-400 hover:text-white'
               }`}
             >
               <span>Appearance: {isLight ? 'Light Mode' : 'Dark Mode'}</span>
@@ -154,7 +168,7 @@ export default function Navbar() {
               href="/cart"
               onClick={() => setMobileMenuOpen(false)}
               className={`py-1 flex items-center justify-between ${
-                isLight ? 'text-zinc-700 hover:text-black' : 'text-zinc-400 hover:text-white'
+                isLight ? 'text-zinc-800 hover:text-black' : 'text-zinc-400 hover:text-white'
               }`}
             >
               <span>Shopping Bag ({totalItems})</span>
