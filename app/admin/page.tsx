@@ -67,13 +67,12 @@ export default function AdminPage() {
     sortOrder: '1',
   });
 
-  // Check auth session
+  // Strict Admin Protection: Always require password every time the portal is accessed
   useEffect(() => {
-    const isAuth = sessionStorage.getItem('late90s_admin_session') === 'true';
-    if (isAuth) {
-      setAuthenticated(true);
-      fetchAllData();
-    }
+    // Clear any previous session so password is required on every visit/refresh
+    sessionStorage.removeItem('late90s_admin_session');
+    localStorage.removeItem('late90s_admin_session');
+    setAuthenticated(false);
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -91,7 +90,7 @@ export default function AdminPage() {
       const data = await res.json();
       if (data.success) {
         setAuthenticated(true);
-        sessionStorage.setItem('late90s_admin_session', 'true');
+        setPasswordInput('');
         fetchAllData();
       } else {
         setAuthError(data.error || 'Incorrect admin password');
@@ -105,7 +104,10 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     sessionStorage.removeItem('late90s_admin_session');
+    localStorage.removeItem('late90s_admin_session');
     setAuthenticated(false);
+    setPasswordInput('');
+    setAuthError('');
   };
 
   const fetchAllData = async () => {
