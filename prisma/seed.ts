@@ -142,30 +142,30 @@ async function main() {
     await prisma.product.create({ data: product });
   }
 
-  // 4. Create Approved Reviews
+  // 4. Create Approved Reviews matching real catalog
   const reviews = [
     {
-      customerName: 'Aarav Mehta',
+      customerName: 'Malik F.',
       rating: 5,
-      comment: 'Quality on the 260 GSM tee is unbelievable! The WhatsApp ordering was super quick, confirmed in literally 2 minutes on chat.',
+      comment: "Grabbed the OverSize T-Shirt for 1,600 LKR. Heavyweight drop-shoulder cut is top notch, fabric doesn't shrink after wash. WhatsApp ordering was effortless.",
       approved: true,
     },
     {
-      customerName: 'Rhea Sen',
+      customerName: 'Kavishka Perera',
       rating: 5,
-      comment: 'The 480 GSM hoodie is the best heavyweight hoodie in India right now. Pure vintage 90s silhouette and super cozy.',
+      comment: 'The Devido Stripe Shirt quality is crazy good! Premium relaxed drape and looks insane styled with wide bottoms. Delivery to Kandy was within 2 days.',
       approved: true,
     },
     {
-      customerName: 'Devansh K.',
+      customerName: 'Senura D.',
       rating: 5,
-      comment: 'Baggy denim fits crazy good. WhatsApp checkout is 100x smoother than typical clunky checkout pages. Love the gen-z aesthetic.',
+      comment: 'Linen Trouser fit is on point. Perfect breathable fabric for Colombo weather and the baggy aesthetic is exactly 90s. 10/10 purchase.',
       approved: true,
     },
     {
-      customerName: 'Sneha Roy',
-      rating: 4,
-      comment: 'Track jacket arrived in 3 days. Super dope styling and packaging with late90s stickers.',
+      customerName: 'Naveen Silva',
+      rating: 5,
+      comment: "Can't beat this 1,600 LKR price for an oversized tee with this kind of GSM. Ordered directly via WhatsApp and got prompt confirmation.",
       approved: true,
     },
   ];
